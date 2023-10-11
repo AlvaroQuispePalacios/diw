@@ -1,11 +1,38 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: #EDE7E3;
+    background-color: #fff9fb;
+}
+.main{
+    background-color: #ede7e3;
+    border-radius: 10px;
 }
 .navbar{
     background-color: #001427;
 }
-.nav-item{
-    color: white;
+.nav{
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.nav-link{
+    color: #000;
+    font-family: "Archivo Black";
+}
+.title{
+    font-family: "Archivo Black";
+}
+.card{
+    margin-bottom: 1em;
+}
+.card-align-item{
+    
+}
+.nbutton{
+    background-color: #ede7e3;
+    border-radius: 10px;
+}
+
+.sign{
+    background-color: #f46036;
 }
