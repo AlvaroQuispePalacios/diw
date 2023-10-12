@@ -33,7 +33,7 @@ body{
     padding: .5rem;
     margin: .5rem;
     font-size: 1.05rem; 
-    
+    font-family: "Archivo black";
     transition: all .3s ease-out;
 }
 .nav-link:hover{
@@ -43,12 +43,16 @@ body{
 
 /* ------------------------------------------- Modificaciones del main ------------------------------------------------ */
 
+h1{
+    font-family: "Archivo black";
+}
 .content{
     background-color: var(--content-color);
     border-radius: 10px;
 }
 
 .card{
+    margin-bottom: 2rem;
     max-width: 100%;
     background-color: var(--card-color);
     gap: .5rem;
@@ -64,6 +68,7 @@ body{
 }
 
 .card-text{
+    font-family: "Open Sans";
     width: 100%;
     background-color: var(--body-color);
 }
@@ -76,6 +81,9 @@ body{
 .topic:hover{
     background-color: #fff;
     color: #000;
+}
+.btn{
+    font-family: "Open Sans";
 }
 
 .author{
