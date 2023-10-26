@@ -1,0 +1,132 @@
+/* Variables con mis colores elegidos para la pagina web */
+:root{
+    --body-color: #fff9fb;
+    --content-color: #ede7e3;
+    --navbar-color: #001427;
+    --card-color :#779dcf;
+    --other: #f46036;
+}
+
+body{
+    background-color: var(--body-color);
+}
+
+/*---------------------------------- Estilos de Bootstrap modificado ------------*/
+/* --------------------------Modificaciones en el navbar ------------------*/
+.navbar{
+    background-color: var(--navbar-color);
+}
+.navbar-brand img{
+    width: auto;
+    height: 3rem;
+}
+.navbar-dark .navbar-toggler{
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-toggler:hover{
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28119, 157, 207, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    
+}
+
+.nav-link{
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 1.05rem; 
+    font-family: "Archivo black";
+    transition: all .3s ease-out;
+}
+.nav-link:hover{
+    color: #000;
+    background-color: var(--content-color);
+}
+
+/* ------------------------------------------- Modificaciones del main ------------------------------------------------ */
+
+h1{
+    font-family: "Archivo black";
+}
+.content{
+    background-color: var(--content-color);
+    border-radius: 10px;
+}
+
+.card{
+    margin-bottom: 2rem;
+    max-width: 100%;
+    background-color: var(--card-color);
+    gap: .5rem;
+}
+
+.card-img{
+    max-width: 100%;
+}
+
+.card-body{
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.card-text{
+    font-family: "Open Sans";
+    width: 100%;
+    background-color: var(--body-color);
+}
+
+.topic{
+    border: transparent;
+    background-color: var(--navbar-color);
+    transition: all .3s ease-out;
+}
+.topic:hover{
+    background-color: #fff;
+    color: #000;
+}
+.btn{
+    font-family: "Open Sans";
+}
+
+.author{
+    display: flex;
+    justify-content: end;
+}
+@media (min-width: 576px) {
+
+    .card-img{
+        max-width: 100%;
+    }
+    .content{
+        max-width: 50%;
+    }
+}
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .card{
+        flex-direction: row;
+    }
+    .card-img{
+        max-width: 35%;
+    }
+    .content{
+        max-width: 100%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .nav-link:hover{
+        color: #fff;
+        background-color: transparent;
+    }
+
+}   
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}
+
