@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -20,47 +20,61 @@
         <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-dark">
             <div class="container">
               <a class="navbar-brand" href="#">
-                <img src="/img/LogoEchado.png" alt="DuckType">
+                <img src="../img/LogoEchado.png" alt="DuckType">
               </a>
               <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-lg-auto">
-                  <a class="nav-link" href="/index.html">Home</a>
+                  <a class="nav-link" href="../index.html">Home</a>
                   <a class="nav-link" href="#">Contact</a>
                   <a class="nav-link" href="#">Login</a>
-                  <a class="nav-link" href="#" >Sign Up</a>
+                  <a class="nav-link" href="./SignUp.html" >Sign Up</a>
                 </div>
               </div>
             </div>
           </nav> 
     </header>
     <main>
-      <div class="container border">
+      <div >
 
-        <section class="container flex-column p-5 text-center border">
-          <h2>Sign Up</h2>
+      </div>
+      <div class="container d-flex align-items-center justify-content-center p-3 ro">
+
+        <section class="sign-up p-5 text-center rounded">
+          <h2 class="container-fluid">Sign Up</h2>
           <form action="">
-            <label class="d-block" for="username">Username</label>
+            <label for="username">Username</label>
             <input type="text">
 
-            <label class="d-block" for="password">Password</label>
+            <label for="password">Password</label>
             <input type="password">
 
-            <label class="d-block" for="repeatPassword">Repeat Password</label>
+            <label for="repeatPassword">Repeat Password</label>
             <input type="password">
 
-            <label class="d-block" for="email">Email</label>
-            <input type="email">
+            <label for="email">Email</label>
+            <input class="mb-2" type="email">
 
-            <div class="container m-2 d-flex justify-content-center">
-              <img class="img-fluid rounded-circle m-2" src="/img/pato1.jpg " alt="" width="75px">
-              <img class="img-fluid rounded-circle m-2" src="/img/pato1.jpg " alt="" width="75px">
-              <img class="img-fluid rounded-circle m-2" src="/img/pato1.jpg " alt="" width="75px">
+            <div class="mt-2 d-flex flex-row justify-content-center ">
+              <input class="position-absolute" type="radio" name="image" id="image1">
+              <label class="p-2" for="image1">
+                <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " alt="">
+              </label>
+
+              <input class="position-absolute" type="radio" name="image" id="image2">
+              <label class="p-2" for="image2">
+                <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " alt="">
+              </label>
+
+              <input class="position-absolute" type="radio" name="image" id="image3">
+              <label class="p-2" for="image3">
+                <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " alt="">
+              </label>
             </div>
-            <div class="row m-2 p-2">
-              <input class="" type="submit" value="Registration">
+            <div class="m-1 d-flex justify-content-center">
+              <input class="registration" type="submit" value="Registration">
             </div>
           </form>
         </section>
