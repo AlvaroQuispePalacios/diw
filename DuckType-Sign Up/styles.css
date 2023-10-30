@@ -133,6 +133,15 @@ h1{
 
 /*Modificaciones en la pagina Sign Up*/
 
+@font-face {
+    font-family: "Archivo black";
+    src: url(../fuentes/ArchivoBlack-Regular.ttf);
+}
+
+.title{
+    font-family: "Archivo black";
+}
+
 .sign-up{
     background-color: var(--card-color);
 }
