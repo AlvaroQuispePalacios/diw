@@ -135,7 +135,7 @@ h1{
 
 @font-face {
     font-family: "Archivo black";
-    src: url(../fuentes/ArchivoBlack-Regular.ttf);
+    src: url(./fuentes/ArchivoBlack-Regular.ttf);
 }
 
 .title{
@@ -177,4 +177,3 @@ input[type="text"], input[type="password"], input[type="email"]{
     max-width: 150px;
 }
 
-/* Crear */
