@@ -3,11 +3,11 @@
     --body-color: #fff9fb;
     --content-color: #ede7e3;
     --navbar-color: #001427;
-    --card-color :#779dcf;
+    --card-color :hsla(214, 48%, 64%, 0.786);
     --other: #f46036;
 }
 
-body{
+.index-body{
     background-color: var(--body-color);
 }
 
@@ -138,12 +138,19 @@ h1{
     src: url(./fuentes/ArchivoBlack-Regular.ttf);
 }
 
-.title{
+/* .background-image-sign-up{
+    background-image: url(./img/pato2.png);
+    background-repeat: no-repeat;
+} */
+
+.title-sign-up{
     font-family: "Archivo black";
+    margin-bottom: 15px;
 }
 
 .sign-up{
     background-color: var(--card-color);
+    box-shadow: 10px 10px #001427;
 
 }
 
@@ -152,10 +159,12 @@ h1{
     width: 100%;
     max-width: 85px;
     min-width: 50px;
+    transition: .5s;
 }
 
 .avatar:hover{
     opacity: 1;
+    outline: 2px dashed black;
 }
 
 input[type="radio"]{
@@ -164,13 +173,18 @@ input[type="radio"]{
 
 input[type="radio"]:checked + label .avatar{
     opacity: 1;
+    outline: 2px dashed black;
 }
 
 input[type="text"], input[type="password"], input[type="email"]{
     display: flex;
     width: 100%;
+    margin-bottom: 25px;
 }
 
+label{
+    font-family: "Archivo black";
+}
 .registration{
     width: 100%;
     min-width: 100px;
