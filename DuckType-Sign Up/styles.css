@@ -3,7 +3,7 @@
     --body-color: #fff9fb;
     --content-color: #ede7e3;
     --navbar-color: #001427;
-    --card-color :hsla(214, 48%, 64%, 0.786);
+    --card-color :hsla(214, 48%, 64%, 0.723);
     --other: #f46036;
 }
 
@@ -90,6 +90,7 @@ h1{
     display: flex;
     justify-content: end;
 }
+
 @media (min-width: 576px) {
 
     .card-img{
@@ -131,17 +132,12 @@ h1{
 }
 
 
-/*Modificaciones en la pagina Sign Up*/
-
+/*//////////////////Modificaciones en la pagina Sign Up//////////////////*/
+/* Custom Font */
 @font-face {
     font-family: "Archivo black";
     src: url(./fuentes/ArchivoBlack-Regular.ttf);
 }
-
-/* .background-image-sign-up{
-    background-image: url(./img/pato2.png);
-    background-repeat: no-repeat;
-} */
 
 .title-sign-up{
     font-family: "Archivo black";
@@ -149,22 +145,29 @@ h1{
 }
 
 .sign-up{
-    background-color: var(--card-color);
-    box-shadow: 10px 10px #001427;
+    /* Gradiente */
+    background: linear-gradient(var(--body-color), 40%,var(--card-color)) ;
+    /* Box-shadow */
+    box-shadow: 5px 5px #001427;
 
 }
 
 .avatar{
+    /* Transparencia */
     opacity: .7;
     width: 100%;
     max-width: 85px;
-    min-width: 50px;
-    transition: .5s;
+    min-width: 65px;
+    /* Transition */
+    transition: .2s;
 }
 
 .avatar:hover{
     opacity: 1;
+    width: 150px;
     outline: 2px dashed black;
+    /* Transform */
+    transform: translate(5px, 5px) scale(1.1);
 }
 
 input[type="radio"]{
@@ -185,9 +188,9 @@ input[type="text"], input[type="password"], input[type="email"]{
 label{
     font-family: "Archivo black";
 }
+
 .registration{
     width: 100%;
     min-width: 100px;
     max-width: 150px;
 }
-
