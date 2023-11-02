@@ -144,6 +144,7 @@ h1{
     margin-bottom: 15px;
 }
 
+
 .sign-up{
     /* Gradiente */
     background: linear-gradient(var(--body-color), 40%,var(--card-color)) ;
