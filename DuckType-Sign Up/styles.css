@@ -196,16 +196,27 @@ label{
     max-width: 150px;
 }
 
+.background-img{
+    background-image: url(./img/pato-bailando2.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    width: 60px;
+    height: 60px;
+    animation-name: run;
+
+}
 .animation{
-    animation-name: run-duck;
+    animation-name: run;
     position: relative;
-    animation: infinite;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
 }
 
-@keyframes run-duck{
-    0%   {left:0px; top:0px;}
-    25%  {left:200px; top:0px;}
-    50%  {left:200px; top:200px;}
-    75%  {left:0px; top:200px;}
-    100% {left:0px; top:0px;}
+@keyframes run{
+    0%   {left:0px;}
+    25%  {left:25%;}
+    50%  {left:50%;}
+    75%  {left:70%;}
+    90%  {left:90%;}
 }
