@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Tipografias -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img src="../img/LogoEchado.png" alt="DuckType">
+              </a>
+              <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-lg-auto">
+                  <a class="nav-link" href="../index.html">Home</a>
+                  <a class="nav-link" href="#">Contact</a>
+                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="./SignUp.html" >Sign Up</a>
+                </div>
+              </div>
+            </div>
+          </nav> 
+    </header>
+    <main>
+      <div class="container">
+        <div class="container d-flex align-items-center justify-content-center p-3">
+  
+          <section class="sign-up p-5 text-center rounded mt-2">
+            <h2 class="container-fluid title-sign-up">Sign Up</h2>
+            <form action="">
+              <label for="username">Username</label>
+              <input type="text">
+  
+              <label for="password">Password</label>
+              <input type="password">
+  
+              <label for="repeatPassword">Repeat Password</label>
+              <input type="password">
+  
+              <label for="email">Email</label>
+              <input class="mb-2" type="email">
+  
+              <div class=" mt-2 d-flex flex-row justify-content-center ">
+                <input class="position-absolute" type="radio" name="image" id="image1">
+                <label class="p-2" for="image1">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " alt="">
+                </label>
+  
+                <input class="position-absolute" type="radio" name="image" id="image2">
+                <label class="p-2" for="image2">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato2.png " alt="">
+                </label>
+  
+                <input class="position-absolute" type="radio" name="image" id="image3">
+                <label class="p-2" for="image3">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato3.jpg " alt="">
+                </label>
+              </div>
+              <div class="m-1 d-flex justify-content-center">
+                <input class="registration" type="submit" value="Register">
+              </div>
+              <section class="d-block">
+                <div class="background-img animation"></div>
+              </section>
+            </form>
+          </section>
+        </div>
+
+
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
