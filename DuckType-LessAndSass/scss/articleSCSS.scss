@@ -1,22 +1,48 @@
 $body-color: #fff9fb;
 $content-color: #ede7e3;
+$navbar-color: #001427;
+$card-color :hsla(214, 48%, 64%, 0.723);
+$other: #f46036;
 
 .body-article{
     background-color: $body-color;
 }
 
-.title-article{
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
 
-.container-article{
+.username{
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    
+    .username-card{
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        
+        a{ 
+            text-decoration: none;
+            .username-img{
+                max-width: 125px;
+            }
+            
+            .username-name{
+                color: black;
+            }
+        }
+    }
 
-    .autor-article{
+    .username-contact{
         display: flex;
         
+        div{
+            padding: 1rem;
+            a{
+                img{
+                    width: 3.5rem;
+                }
+            }
+        }
     }
+
 }

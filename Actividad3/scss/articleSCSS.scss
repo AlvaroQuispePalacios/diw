@@ -1,0 +1,22 @@
+$body-color: #fff9fb;
+$content-color: #ede7e3;
+
+.body-article{
+    background-color: $body-color;
+}
+
+.title-article{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.container-article{
+    display: flex;
+    flex-wrap: wrap;
+
+    .autor-article{
+        display: flex;
+        
+    }
+}
