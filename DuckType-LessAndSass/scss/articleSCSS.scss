@@ -4,8 +4,9 @@ $navbar-color: #001427;
 $card-color :hsla(214, 48%, 64%, 0.723);
 $other: #f46036;
 
-.body-article{
+.body{
     background-color: $body-color;
+    background-image: linear-gradient($card-color, $content-color);
 }
 
 .article{
@@ -56,6 +57,8 @@ $other: #f46036;
     &__card{
         display: flex;
         align-items: center;
+
+        padding: .5rem;
     }
 
     &__img{
