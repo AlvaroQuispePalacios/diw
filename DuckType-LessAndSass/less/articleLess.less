@@ -1,16 +1,16 @@
-$body-color: #fff9fb;
-$content-color: #ede7e3;
-$navbar-color: #001427;
-$card-color :hsla(214, 48%, 64%, 0.723);
-$other: #f46036;
+@body-color: #fff9fb;
+@content-color: #ede7e3;
+@navbar-color: #001427;
+@card-color :hsla(214, 48%, 64%, 0.723);
+@other: #f46036;
 
 .body-article{
-    background-color: $body-color;
+    background-color: @body-color;
 }
 
 .article{
     padding: 1.5rem;
-    background-color: $content-color;
+    background-color: @content-color;
     border-radius: .5rem;
 
     &__background__img{
@@ -26,7 +26,7 @@ $other: #f46036;
     }
 
     &__text{
-        background-color: $body-color;
+        background-color: @body-color;
         padding: 1.5rem;
         border-radius: .5rem;
     }
@@ -49,7 +49,7 @@ $other: #f46036;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $content-color;
+    background-color: @content-color;
     border-radius: .5rem;
     padding: .5rem;
 

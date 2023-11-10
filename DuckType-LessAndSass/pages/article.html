@@ -13,8 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/DuckType-LessAndSass/scss/articleSCSS.css">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../scss/articleSCSS.css">
+    <link rel="stylesheet" href="../less/articleLess.css">
     <title>DuckType</title>
 </head>
 <body class="body-article">
@@ -44,40 +45,62 @@ data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="na
 
     <main> 
 
-      <div class="border container">
+      <div class="container ">
         <h2 class="d-flex justify-content-center">Title Article</h2>
         <section class="row">
-          <article class="border col col-lg-8 col-12 order-lg-0 order-1 mt-2  mt-lg-0">
-            <div class="">
-              <div class="">
-                <img src="../img/gatoTroste.jpg" class="img-fluid">
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam maiores alias minima qui porro vitae, esse in labore voluptatibus dolor, vel amet exercitationem ea quisquam, perferendis debitis numquam beatae repellendus?
-                Optio quisquam dolor voluptatem obcaecati tempora perferendis labore commodi rerum non accusamus, vitae culpa pariatur consectetur fuga iusto enim. Culpa eum enim quis, ex eos quo minima id unde? Error.
-                Consectetur nulla mollitia totam blanditiis fugiat facilis molestias dolorum harum, recusandae voluptates soluta ut itaque earum quod veniam amet perferendis autem neque repellat voluptatem impedit maxime! Officiis asperiores perferendis voluptates!
+
+          <article class="col col-lg-8 col-12 order-lg-0 order-1 mt-2  mt-lg-0 ">
+            <div class="article">
+              <div class="article__background__img"></div>
+              <p class="article__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nostrum non voluptates vero molestiae quis aliquid velit autem at architecto esse facilis temporibus vel, quae animi quam, repellat maiores veritatis?
+                Asperiores aspernatur quisquam molestiae illo minima nihil libero quos aliquam dolore, impedit deleniti aliquid ea vitae, ipsum beatae? Impedit itaque libero dolore corrupti dolores expedita delectus commodi. Cupiditate, iusto laborum.
+                Molestiae veniam quia tempore vel itaque ex nobis, aliquid animi. Sapiente enim at hic velit, dolore vel, nobis molestiae commodi quaerat aliquid, voluptatum reiciendis tempora nihil esse. Neque, odit enim.
+                Consequatur odit minus numquam laborum! Consequatur et accusamus pariatur maiores quam cum molestiae nam labore voluptate voluptatem, eligendi amet earum dolore reiciendis autem fugit unde non deserunt dolorum iure ex.
               </p>
-              
+
+              <div class="row">
+
+                <div class="col-12 col-md-6 article__star">
+                  <img src="../img/star-regular.svg" class="article__stars__item">
+                  <img src="../img/star-regular.svg" class="article__stars__item">
+                  <img src="../img/star-regular.svg" class="article__stars__item">
+                  <img src="../img/star-regular.svg" class="article__stars__item">
+                  <img src="../img/star-regular.svg" class="article__stars__item">
+                </div>
+
+                <div class="col-12 col-md-6 article__topics">
+                  <a class="btn btn-primary topic">Breed</a>
+                  <a class="btn btn-primary topic">Peekin Duck</a>
+                </div>
+              </div>
+
             </div>
+
           </article>
-          <article class="border col col-lg-4 col-12 mt-2 mt-lg-0">
+
+          <article class="col col-lg-4 col-12 mt-2 mt-lg-0">
 
             <div class="username">
               
-              <div class="username-card">
+              <div class="username__card">
 
-                <div>
+                <div class="username__img">
                   <a href="#">
-                    <img src="/DuckType-LessAndSass/img/pato-bailando2.gif" alt="" class="username-img">
+                    <img src="../img/pato-bailando2.gif" class="img-fluid">
                   </a>
                 </div>
 
-                <div>
-                  <span>username</span>
+                <div class="username__name">
+                  <a href="#">
+                    <span>Username</span>
+                  </a>
                 </div>
+
+                
               </div>
 
-              <div class="username-contact">
+              <div class="username__contact">
 
                 <div>
                   <a href="">
