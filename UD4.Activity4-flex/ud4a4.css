@@ -1,0 +1,178 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+header > nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo{
+    width: 8rem;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.menu > ul{
+    padding: 0;
+    display: flex;
+
+}
+
+.menu-element{
+    margin: 0px .5rem;
+    text-align: center;
+}
+
+.menu-element > a{
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/* -----------------------ASIDE----------------- */
+
+aside{
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+}
+
+
+.list-group > ul{
+    padding: 1rem;
+}
+
+.menu2-element{
+    margin: .2rem;
+}
+
+.menu2-element > a{
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main > div{
+    display: flex;
+    flex-direction: column;
+}
+
+a:hover{
+    color: orange;
+    text-decoration: underline;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------------SECTION PRODUCTS---------- */
+
+#products-filter > div{
+    background-color: lightgray;
+    padding: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#product-listing{
+    padding: 0;
+    margin: 0;
+}
+
+#product-listing > li{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-name{
+    display: block;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.image-container{
+    margin-right: .2rem;
+}
+
+img {
+    width: 25rem;
+}
+
+#load-more-products{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/*---------------------- BUTTON------------------  */
+
+#back-to-top{
+    position: fixed;
+    top: 55rem;
+    right: 2rem;
+}
+
+/* ----------------FOOTER------------------------- */
+.footer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.footer > ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+/* ------------------MEDIA QUERYS------------ */
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+    main > div{
+        flex-direction: row;
+    }
+
+    aside{
+        display: block;
+        margin-right: 5rem;
+        margin: 0;
+        padding-right: 5rem;
+    }
+
+    .menu > div{
+        position: absolute;
+        right: 0;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+
+
+}
+
+@media (min-width: 1400px) {}
