@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     margin: 0;
     padding: 0;
@@ -25,6 +28,7 @@ a:hover{
 }
 
 /* -----------HEADER------------- */
+
 .image{
     text-align: center;
 }
@@ -36,7 +40,9 @@ a:hover{
 .menu{
     text-align: center;
 }
-
+.menu > div{
+    margin-bottom: 1rem;
+}
 .menu > ul > li{
     padding: .5rem;
     display: inline-block;
@@ -47,9 +53,18 @@ aside{
     text-align: center;
 }
 
+.menu2-element{
+    margin: .5rem;
+    
+}
+
 #products-filter{
     padding: 1.2rem;
     background-color: lightgray;
+}
+
+#product-listing{
+    width: 100%;
 }
 
 #product-listing > li{
@@ -58,6 +73,8 @@ aside{
 
 #product-listing article{
     display: inline-block;
+    width: 100%;
+    max-width: 22.2rem;
 }
 
 .product-name{
@@ -69,11 +86,63 @@ aside{
 }
 
 img{
-    width: 25rem;
+    width: 100%;
 }
 
 #back-to-top{
     position: fixed;
     top: 55rem;
     right: 2rem;
+}
+
+#load-more-products{
+    text-align: center;
+}
+/* ----------------FOOTER----------- */
+
+.footer{
+    margin-top: 1rem;
+    background-color: lightgray;
+}
+
+.footer > ul > li{
+    display: block;
+    text-align: center;
+}
+
+.footer > div{
+    text-align: center;
+}
+
+/* ------------------MEDIA QUERYS------------ */
+
+@media (min-width: 992px) {
+    .menu > div{
+        position: absolute;
+        right: 0;
+        top: 6.5rem;
+    }
+
+    aside{
+        position: absolute;
+    }
+
+    aside > nav{
+        display: inline-block;
+        position: relative;
+        margin-left: 2rem;
+    }
+    
+    .menu2-element{
+        margin-left: 1rem;
+        
+    }
+    section{
+        display: inline-block;
+        position: relative;
+    }
+    
+    .list-group{
+        text-align: start;
+    }
 }
