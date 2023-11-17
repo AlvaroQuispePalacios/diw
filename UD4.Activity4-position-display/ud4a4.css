@@ -74,7 +74,7 @@ aside{
 #product-listing article{
     display: inline-block;
     width: 100%;
-    max-width: 22.2rem;
+    /* max-width: 22.2rem; */
 }
 
 .product-name{
@@ -116,7 +116,9 @@ img{
 
 /* ------------------MEDIA QUERYS------------ */
 
-@media (min-width: 992px) {
+@media (min-width: 870px) {
+    
+    
     .menu > div{
         position: absolute;
         right: 0;
@@ -124,7 +126,40 @@ img{
     }
 
     aside{
-        position: absolute;
+        display: inline-block;
+        width: 15%;
+        text-align: left;
+        float: left;
+    }
+
+    aside > nav > ul{
+        margin-left: 5rem;
+    }
+
+    .list-group{
+        margin-bottom: 2rem;
+    }
+
+    #product-listing article {
+        max-width: 24rem;
+    }
+
+
+    section{
+        display: inline-block;
+        width:82%;
+    }
+    /*
+
+    #product-listing article{
+        max-width: 25rem;
+    }
+
+
+    aside{
+        text-align: left;
+        display: inline-block;
+        
     }
 
     aside > nav{
@@ -140,9 +175,11 @@ img{
     section{
         display: inline-block;
         position: relative;
+        
     }
     
     .list-group{
         text-align: start;
     }
-}
+    */
+} 
