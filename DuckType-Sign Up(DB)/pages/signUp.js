@@ -10,8 +10,23 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 // const ADD_USER = "Add user";
 
 let db;
+let cajaMostrar;
 
 function iniciarBaseDeDatos(){
+    cajaMostrar = document.getElementById('cajaMostrar');
+
+
+    let form = document.getElementById('form');
+    form.addEventListener('submit', (e) => {
+
+        e.preventDefault();
+        
+        guardarUsuario();
+        console.log("Usuario Guardado");
+
+
+    });
+
 
     /* 
         Conexion a la base de datos.
@@ -38,17 +53,58 @@ function mostrarError(evento){
 function iniciar(evento){
     db = evento.target.result;
     console.log("Base de datos fue abierta", db);
+    mostrar();
 }
 
 
 function crearAlmacen(evento){
     var baseDeDatos = evento.target.result;
     console.log("Base de datos fue creada", db);
-    var almacen = baseDeDatos.createObjectStore('users', {keyPath: 'users'});
-    almacen.createIndex('username','username', {unique: false});
-    almacen.createIndex('password','password', {unique: false});
-    almacen.createIndex('email','email', {unique: false});
+    var almacen = baseDeDatos.createObjectStore('users', {keyPath: 'email'});
+    // almacen.createIndex('username','username', {unique: false});
+    // almacen.createIndex('password','password', {unique: false});
+    // almacen.createIndex('email','email', {unique: false});
 
+}
+
+function guardarUsuario(){
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let email = document.getElementById('email').value;
+
+    let transaccion = db.transaction(['users'], 'readwrite');
+    let almacen = transaccion.objectStore('users');
+
+    almacen.add({
+        'username': username,
+        'password': password,
+        'email': email
+    });
+
+    document.getElementById('username').value = "";
+    document.getElementById('password').value = "";
+    document.getElementById('email').value = "";
+    
+}
+
+/* 
+
+*/
+function mostrar(){
+    cajaMostrar.innerHTML = "";
+    let transaccion = db.transaction(['users']);
+    let almacen = transaccion.objectStore('users');
+
+    let puntero = almacen.openCursor();
+    puntero.addEventListener('success', mostrarUsuario);
+
+}
+
+function mostrarUsuario(evento){
+    let puntero = evento.target.result;
+    if(puntero){
+        cajaMostrar.innerHTML = puntero.value.username;
+    }
 }
 
 window.addEventListener('load', iniciarBaseDeDatos);
