@@ -15,16 +15,15 @@ let cajaMostrar;
 function iniciarBaseDeDatos(){
     cajaMostrar = document.getElementById('cajaMostrar');
 
-
+    // Evita el submit
     let form = document.getElementById('form');
     form.addEventListener('submit', (e) => {
 
         e.preventDefault();
         
         guardarUsuario();
+
         console.log("Usuario Guardado");
-
-
     });
 
 
@@ -53,7 +52,7 @@ function mostrarError(evento){
 function iniciar(evento){
     db = evento.target.result;
     console.log("Base de datos fue abierta", db);
-    mostrar();
+    // mostrar();
 }
 
 
@@ -67,10 +66,21 @@ function crearAlmacen(evento){
 
 }
 
+let img;
+let images = document.getElementById('images');
+images.addEventListener('click', (e) => {
+    if(e.target.classList.contains('avatar')){
+        img = e.target.src;
+        console.log(img);
+    }
+});
+
 function guardarUsuario(){
+
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     let email = document.getElementById('email').value;
+
 
     let transaccion = db.transaction(['users'], 'readwrite');
     let almacen = transaccion.objectStore('users');
@@ -78,11 +88,13 @@ function guardarUsuario(){
     almacen.add({
         'username': username,
         'password': password,
-        'email': email
+        'email': email,
+        'image': img
     });
 
     document.getElementById('username').value = "";
     document.getElementById('password').value = "";
+    document.getElementById('password2').value = "";
     document.getElementById('email').value = "";
     
 }
@@ -90,15 +102,15 @@ function guardarUsuario(){
 /* 
 
 */
-function mostrar(){
-    cajaMostrar.innerHTML = "";
-    let transaccion = db.transaction(['users']);
-    let almacen = transaccion.objectStore('users');
+// function mostrar(){
+//     cajaMostrar.innerHTML = "";
+//     let transaccion = db.transaction(['users']);
+//     let almacen = transaccion.objectStore('users');
 
-    let puntero = almacen.openCursor();
-    puntero.addEventListener('success', mostrarUsuario);
+//     let puntero = almacen.openCursor();
+//     puntero.addEventListener('success', mostrarUsuario);
 
-}
+// }
 
 function mostrarUsuario(evento){
     let puntero = evento.target.result;
@@ -106,5 +118,11 @@ function mostrarUsuario(evento){
         cajaMostrar.innerHTML = puntero.value.username;
     }
 }
+
+
+
+
+
+
 
 window.addEventListener('load', iniciarBaseDeDatos);
