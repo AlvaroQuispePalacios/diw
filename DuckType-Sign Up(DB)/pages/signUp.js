@@ -75,6 +75,20 @@ images.addEventListener('click', (e) => {
     }
 });
 
+let rol;
+let roles = document.getElementById('roles');
+roles.addEventListener('click', (e) => {
+    if(e.target.value == 'admin'){
+        rol = 'admin';
+        console.log(rol);
+    }else if (e.target.value == 'user'){
+        rol = 'user';
+        console.log(rol);
+    }
+
+});
+
+
 function guardarUsuario(){
 
     let username = document.getElementById('username').value;
@@ -89,7 +103,8 @@ function guardarUsuario(){
         'username': username,
         'password': password,
         'email': email,
-        'image': img
+        'image': img,
+        'rol': rol
     });
 
     document.getElementById('username').value = "";
@@ -119,12 +134,6 @@ function mostrarUsuario(evento){
     }
 }
 
-// let roles = document.querySelector('.roles');
-// console.log(roles);
-// roles.addEventListener('click', (e) => {
-//     console.log(e.target.classList.contains('option'));
-    
-// });
 
 
 

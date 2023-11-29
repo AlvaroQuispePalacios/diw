@@ -220,3 +220,8 @@ label{
     75%  {left:70%;}
     90%  {left:90%;}
 }
+
+
+.roles input[type="radio"]{
+    opacity: 1;
+}
