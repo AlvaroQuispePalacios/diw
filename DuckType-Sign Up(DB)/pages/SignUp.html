@@ -54,34 +54,34 @@
   
               <label for="email">Email</label>
               <input class="mb-2" type="email" name="email" id="email">
-  
+              
+              <label>Rol: </label>
+              <select class="roles">
+                <option selected disabled>Elige una opcion</option>
+                <option class="option" value="customer">Customer</option>
+                <option class="option" value="admin">Admin</option>
+              </select>
+
               <div class="mt-2 d-flex flex-row justify-content-center" id="images">
 
                 <input class="position-absolute" type="radio" name="image" id="image1">
                 <label class="p-2" for="image1">
-                  <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " alt="">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg " ruta="/DuckType-Sign Up(DB)/img/pato1.jpg">
                 </label>
   
                 <input class="position-absolute" type="radio" name="image" id="image2">
                 <label class="p-2" for="image2">
-                  <img class="avatar img-fluid rounded-circle" src="../img/pato2.png " alt="">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato2.png " ruta="/DuckType-Sign Up(DB)/img/pato2.png">
                 </label>
   
                 <input class="position-absolute" type="radio" name="image" id="image3">
                 <label class="p-2" for="image3">
-                  <img class="avatar img-fluid rounded-circle" src="../img/pato3.jpg " alt="">
+                  <img class="avatar img-fluid rounded-circle" src="../img/pato3.jpg " ruta="/DuckType-Sign Up(DB)/img/pato3.jpg">
                 </label>
               </div>
 
-              <div class="roles">
 
-                <input type="radio" name="rol" id="admin">
-                <label for="admin">Admin</label>
 
-                <input type="radio" name="rol" id="customer">
-                <label for="customer">Customer</label>
-
-              </div>
               <div class="m-1 d-flex justify-content-center">
                 <input class="registration" type="submit" value="Register" id="btnGuardar">
               </div>

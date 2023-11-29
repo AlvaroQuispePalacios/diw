@@ -70,7 +70,7 @@ let img;
 let images = document.getElementById('images');
 images.addEventListener('click', (e) => {
     if(e.target.classList.contains('avatar')){
-        img = e.target.src;
+        img = e.target.getAttribute('ruta');
         console.log(img);
     }
 });
@@ -80,7 +80,7 @@ function guardarUsuario(){
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     let email = document.getElementById('email').value;
-
+   
 
     let transaccion = db.transaction(['users'], 'readwrite');
     let almacen = transaccion.objectStore('users');
@@ -119,7 +119,12 @@ function mostrarUsuario(evento){
     }
 }
 
-
+// let roles = document.querySelector('.roles');
+// console.log(roles);
+// roles.addEventListener('click', (e) => {
+//     console.log(e.target.classList.contains('option'));
+    
+// });
 
 
 
