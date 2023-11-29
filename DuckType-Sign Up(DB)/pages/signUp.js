@@ -111,21 +111,23 @@ function guardarUsuario(){
     document.getElementById('password').value = "";
     document.getElementById('password2').value = "";
     document.getElementById('email').value = "";
+
+    
     
 }
 
 /* 
 
 */
-// function mostrar(){
-//     cajaMostrar.innerHTML = "";
-//     let transaccion = db.transaction(['users']);
-//     let almacen = transaccion.objectStore('users');
+function mostrar(){
+    cajaMostrar.innerHTML = "";
+    let transaccion = db.transaction(['users']);
+    let almacen = transaccion.objectStore('users');
+    let puntero = almacen.openCursor();
+    console.log(puntero);
+    puntero.addEventListener('success', mostrarUsuario);
 
-//     let puntero = almacen.openCursor();
-//     puntero.addEventListener('success', mostrarUsuario);
-
-// }
+}
 
 function mostrarUsuario(evento){
     let puntero = evento.target.result;
@@ -135,7 +137,7 @@ function mostrarUsuario(evento){
 }
 
 
-
+mostrar();
 
 
 
