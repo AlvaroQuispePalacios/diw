@@ -107,37 +107,40 @@ function guardarUsuario(){
         'rol': rol
     });
 
+    // if(rol == 'admin'){
+    //     location.href = '/DuckType-Sign Up(DB)/pages/admin.html';
+    // }else if(rol == 'user'){
+    //     location.href = '';
+    // }
     document.getElementById('username').value = "";
     document.getElementById('password').value = "";
     document.getElementById('password2').value = "";
     document.getElementById('email').value = "";
 
-    
-    
 }
 
 /* 
 
 */
-function mostrar(){
-    cajaMostrar.innerHTML = "";
-    let transaccion = db.transaction(['users']);
-    let almacen = transaccion.objectStore('users');
-    let puntero = almacen.openCursor();
-    console.log(puntero);
-    puntero.addEventListener('success', mostrarUsuario);
+// function mostrar(){
+//     cajaMostrar.innerHTML = "";
+//     let transaccion = db.transaction(['users']);
+//     let almacen = transaccion.objectStore('users');
+//     let puntero = almacen.openCursor();
+//     console.log(puntero);
+//     puntero.addEventListener('success', mostrarUsuario);
 
-}
+// }
 
-function mostrarUsuario(evento){
-    let puntero = evento.target.result;
-    if(puntero){
-        cajaMostrar.innerHTML = puntero.value.username;
-    }
-}
+// function mostrarUsuario(evento){
+//     let puntero = evento.target.result;
+//     if(puntero){
+//         cajaMostrar.innerHTML = puntero.value.username;
+//     }
+// }
 
 
-mostrar();
+// mostrar();
 
 
 
