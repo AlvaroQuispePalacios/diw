@@ -117,31 +117,52 @@ function guardarUsuario(){
     document.getElementById('password2').value = "";
     document.getElementById('email').value = "";
 
+    
+}
+
+function obtenerUsuarioMedianteEmail(email) {
+    let transaccion = db.transaction(['users'], 'readonly');
+    let almacen = transaccion.objectStore('users');
+    let conexion = almacen.get(email);
+    
+    conexion.onsuccess = () => {
+        console.log(conexion.result);
+    };
 }
 
 /* 
 
 */
-// function mostrar(){
-//     cajaMostrar.innerHTML = "";
-//     let transaccion = db.transaction(['users']);
-//     let almacen = transaccion.objectStore('users');
-//     let puntero = almacen.openCursor();
-//     console.log(puntero);
-//     puntero.addEventListener('success', mostrarUsuario);
-
-// }
-
-// function mostrarUsuario(evento){
-//     let puntero = evento.target.result;
-//     if(puntero){
-//         cajaMostrar.innerHTML = puntero.value.username;
-//     }
-// }
+function obtenerUsuarios(){
+    let transaccion = db.transaction(['users'], 'readonly');
+    let almacen = transaccion.objectStore('users');
+    let conexion = almacen.openCursor();
 
 
-// mostrar();
+    conexion.onsuccess = (e) =>{
+        let cursor = e.target.result;
 
+        if(cursor){
+            console.log("Lista de Usuarios:");
+            // console.log(cursor.value.email);
+            console.log(cursor.value);
+            cursor.continue();
 
+        }else{
+            console.log("D:");
+        }
+    }
+}
+
+function actualizarUsuario(objeto){
+    let transaccion = db.transaction(['users'], 'readwrite');
+    let almacen = transaccion.objectStore('users');
+    let conexion = almacen.put(objeto);
+
+    conexion.onsuccess = () => {
+        obtenerUsuarios();
+    };
+    
+}
 
 window.addEventListener('load', iniciarBaseDeDatos);
