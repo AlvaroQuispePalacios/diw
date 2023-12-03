@@ -104,32 +104,11 @@ function obtenerUsuarios() {
     conexion.onsuccess = (e) => {
         let cursor = e.target.result;
         if (cursor) {
-            contenedorUsuarios.innerHTML += `
-            <div>
-            <label>Nombre: </label><input type="text" value="${cursor.value.username}"><label>Email: </label><input type="text" value="${cursor.value.email}"><label>Ruta imagen: </label><input type="text" value="${cursor.value.image}"><img src="${cursor.value.image}" width="100px"><br><label>Rol: </label><input type="text" value="${cursor.value.rol}">
-            <input type="button" value="Guardar cambios" onclick="guardarCambios(${cursor.value.email})">
-            <input type="button" value="Eliminar" onclick="eliminar(${cursor.value.email})">
-            </div>
-            `;
             cursor.continue();
         } else {
             console.log("D:");
         }
     };
-}
-
-function guardarCambios(email){
-    let transaccion = db.transaction(["users"], "readwrite");
-    let almacen = transaccion.objectStore("users");
-    let conexion = almacen.get(email);
-
-    conexion.addEventListener('success', (e) => {
-        
-    });
-}
-
-function eliminar(email){
-
 }
 
 // const actualizar = document.getElementById('actualizar');
