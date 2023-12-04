@@ -1,8 +1,5 @@
 let dbUsuarioConectado;
-const userImg = document.querySelector('#userImg');
-const userName = document.querySelector('#userName');
-const logOut = document.querySelector('#logOut');
-let contador = 0;
+
 function iniciardbUsuarioConectado() {
     /* 
         Conexion a la base de datos.
@@ -35,33 +32,24 @@ function iniciarUsuarioConectado(evento) {
 function comprobarUsuarioConectado() {
     let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readonly");
     let almacen = transaccion.objectStore("usuarioConectado");
-    
+    let contador;
     let conexion = almacen.openCursor();
     conexion.onsuccess = (e) => {
         let cursor = e.target.result;
         if (cursor) {
             contador = 1;
+        }else{
+            contador = 0;
         }
         
-        if(contador == 1){
-            userName.textContent = cursor.value.username;
-            userImg.setAttribute('src', cursor.value.image);
-        }else {
-            location.href = '/DuckType-Sign Up(DB)/index.html';
+        if(contador == 1 && cursor.value.rol == 'user'){
+            location.href = "/DuckType-SignUp(DB)/pages/user.html";
+        }else if(contador == 1 && cursor.value.rol == 'admin'){
+            location.href = "/DuckType-SignUp(DB)/pages/admin.html"
         }
 
     };
 }
-
-function usuarioLogOut() {
-    let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readwrite");
-    let almacen = transaccion.objectStore("usuarioConectado");
-    let conexion = almacen.clear();
-    contador = 0;
-}
-
-logOut.addEventListener('click', usuarioLogOut)
-
 
 window.addEventListener('load', () => {
     iniciardbUsuarioConectado();

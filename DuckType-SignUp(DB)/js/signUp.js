@@ -152,9 +152,9 @@ function guardarUsuario() {
 
 
     if(rol == 'admin'){
-        location.href = '/DuckType-Sign Up(DB)/pages/admin.html';
+        location.href = "/DuckType-SignUp(DB)/pages/admin.html"
     }else if(rol == 'user'){
-        location.href = '/DuckType-Sign Up(DB)/pages/user.html';
+        location.href = '/DuckType-SignUp(DB)/pages/user.html';
     }
 
     document.getElementById("username").value = "";

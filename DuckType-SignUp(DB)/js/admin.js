@@ -48,7 +48,7 @@ function comprobarUsuarioConectado() {
             userName.textContent = cursor.value.username;
             userImg.setAttribute('src', cursor.value.image);
         } else {
-            location.href = '/DuckType-Sign Up(DB)/index.html';
+            location.href = "/DuckType-SignUp(DB)/index.html"
         }
 
     };
