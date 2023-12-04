@@ -225,6 +225,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     // 
     guardarUsuario();
+
     console.log("Usuario Guardado");
 });
 
