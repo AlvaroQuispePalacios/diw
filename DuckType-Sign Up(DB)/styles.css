@@ -225,3 +225,11 @@ label{
 .roles input[type="radio"]{
     opacity: 1;
 }
+
+.guardarCambios{
+    display: none;
+}
+
+.eliminarUsuario{
+    display: none;
+}

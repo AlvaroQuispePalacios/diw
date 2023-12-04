@@ -44,8 +44,29 @@
             <h1>Users</h1>
         </div>
 
-        <div class="contenedorUsuarios d-flex flex-wrap gap-5">
+        <div class="contenedorUsuarios">
+            <table class="usuario">
+                <tr>
+                    <td>Email</td>
+                    <td>Username</td>
+                    <td>Image</td>
+                    <td>Rol</td>
+                    <td>Actions</td>
+                </tr>
+            </table>
+            <label>Email:</label>
+            <input type="email" class="userEmail" value="">
+            <label>Username:</label>
+            <input type="text" class="userUserName" value="">
+            <label>Image:</label>
+            <input type="text" class="userImage" value="">
+            <label>Rol:</label>
+            <input type="text" class="userRol" value="">
             
+            <input type="text" class="userPassword" value="" hidden>
+
+            <button type="submit" class="guardarCambios">Guardar Cambios</button>
+            <button type="submit" class="eliminarUsuario">Elimnar Usuario</button>
         </div>
     </main>
 
