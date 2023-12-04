@@ -43,9 +43,9 @@ function comprobarUsuarioConectado() {
         }
         
         if(contador == 1 && cursor.value.rol == 'user'){
-            location.href = "/DuckType-SignUp(DB)/pages/user.html";
+            location.href = "/diw/DuckType-SignUp(DB)/pages/user.html";
         }else if(contador == 1 && cursor.value.rol == 'admin'){
-            location.href = "/DuckType-SignUp(DB)/pages/admin.html"
+            location.href = "/diw/DuckType-SignUp(DB)/pages/admin.html"
         }
 
     };
