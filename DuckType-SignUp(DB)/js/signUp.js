@@ -152,9 +152,9 @@ function guardarUsuario() {
 
 
     if(rol == 'admin'){
-        location.href = "/diw/DuckType-SignUp(DB)/pages/admin.html"
+        window.location.href = "/DuckType-SignUp(DB)/pages/admin.html";
     }else if(rol == 'user'){
-        location.href = '/diw/DuckType-SignUp(DB)/pages/user.html';
+        window.location.href = '/DuckType-SignUp(DB)/pages/user.html';
     }
 
     document.getElementById("username").value = "";
@@ -229,3 +229,4 @@ form.addEventListener("submit", (e) => {
     console.log("Usuario Guardado");
 });
 
+console.log(window.location.href);
