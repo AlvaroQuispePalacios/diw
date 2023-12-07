@@ -150,7 +150,7 @@ h1{
     background: linear-gradient(var(--body-color), 40%,var(--card-color)) ;
     /* Box-shadow */
     box-shadow: 5px 5px #001427;
-
+    
 }
 
 .avatar{
@@ -232,4 +232,33 @@ label{
 
 .eliminarUsuario{
     display: none;
+}
+
+.fomularioPreRellenado{
+    display: none;
+}
+
+table{
+    background-color: #ffffffb9;
+    font-size: 1.2rem;
+}
+th,td{
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+th{
+    font-weight: bold;
+}
+
+button{
+    padding: .5rem 1rem;
+    margin: 0 8px;
+    border-radius: 5px;
+    background-color: #f46036;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+
 }
