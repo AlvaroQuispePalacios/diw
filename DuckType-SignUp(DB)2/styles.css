@@ -1,0 +1,264 @@
+/* Variables con mis colores elegidos para la pagina web */
+:root{
+    --body-color: #fff9fb;
+    --content-color: #ede7e3;
+    --navbar-color: #001427;
+    --card-color :hsla(214, 48%, 64%, 0.723);
+    --other: #f46036;
+}
+
+.index-body{
+    background-color: var(--body-color);
+}
+
+/*---------------------------------- Estilos de Bootstrap modificado ------------*/
+/* --------------------------Modificaciones en el navbar ------------------*/
+.navbar{
+    background-color: var(--navbar-color);
+}
+.navbar-brand img{
+    width: auto;
+    height: 3rem;
+}
+.navbar-dark .navbar-toggler{
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .navbar-toggler:hover{
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28119, 157, 207, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    
+}
+
+.nav-link{
+    padding: .5rem;
+    margin: .5rem;
+    font-size: 1.05rem; 
+    font-family: "Archivo black";
+    transition: all .3s ease-out;
+}
+.nav-link:hover{
+    color: #000;
+    background-color: var(--content-color);
+}
+
+/* ------------------------------------------- Modificaciones del main ------------------------------------------------ */
+
+h1{
+    font-family: "Archivo black";
+}
+.content{
+    background-color: var(--content-color);
+    border-radius: 10px;
+}
+
+.card{
+    margin-bottom: 2rem;
+    max-width: 100%;
+    background-color: var(--card-color);
+    gap: .5rem;
+}
+
+.card-img{
+    max-width: 100%;
+}
+
+.card-body{
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.card-text{
+    font-family: "Open Sans";
+    width: 100%;
+    background-color: var(--body-color);
+}
+
+.topic{
+    border: transparent;
+    background-color: var(--navbar-color);
+    transition: all .3s ease-out;
+}
+.topic:hover{
+    background-color: #fff;
+    color: #000;
+}
+.btn{
+    font-family: "Open Sans";
+}
+
+.author{
+    display: flex;
+    justify-content: end;
+}
+
+@media (min-width: 576px) {
+
+    .card-img{
+        max-width: 100%;
+    }
+    .content{
+        max-width: 50%;
+    }
+}
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .card{
+        flex-direction: row;
+    }
+    .card-img{
+        max-width: 35%;
+    }
+    .content{
+        max-width: 100%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .nav-link:hover{
+        color: #fff;
+        background-color: transparent;
+    }
+
+}   
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}
+
+
+/*-------------------Modificaciones en la pagina Sign Up-------------------*/
+/* Custom Font */
+@font-face {
+    font-family: "Archivo black";
+    src: url(./fuentes/ArchivoBlack-Regular.ttf);
+}
+
+.title-sign-up{
+    font-family: "Archivo black";
+    margin-bottom: 15px;
+}
+
+
+.sign-up{
+    /* Gradiente */
+    background: linear-gradient(var(--body-color), 40%,var(--card-color)) ;
+    /* Box-shadow */
+    box-shadow: 5px 5px #001427;
+    
+}
+
+.avatar{
+    /* Transparencia */
+    opacity: .7;
+    width: 100%;
+    max-width: 85px;
+    min-width: 65px;
+    /* Transition */
+    transition: .2s;
+}
+
+.avatar:hover{
+    opacity: 1;
+    width: 150px;
+    outline: 2px dashed black;
+    /* Transform */
+    transform: translate(5px, 5px) scale(1.1);
+}
+
+input[type="radio"]{
+    opacity: 0;
+}
+
+input[type="radio"]:checked + label .avatar{
+    opacity: 1;
+    outline: 2px dashed black;
+}
+
+input[type="text"], input[type="password"], input[type="email"]{
+    display: flex;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+label{
+    font-family: "Archivo black";
+}
+
+.registration{
+    width: 100%;
+    min-width: 100px;
+    max-width: 150px;
+}
+
+.background-img{
+    background-image: url(./img/pato-bailando2.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    width: 60px;
+    height: 60px;
+    animation-name: run;
+
+}
+.animation{
+    animation-name: run;
+    position: relative;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes run{
+    0%   {left:0px;}
+    25%  {left:25%;}
+    50%  {left:50%;}
+    75%  {left:70%;}
+    90%  {left:90%;}
+}
+
+
+.roles input[type="radio"]{
+    opacity: 1;
+}
+
+.guardarCambios{
+    display: none;
+}
+
+.eliminarUsuario{
+    display: none;
+}
+
+.fomularioPreRellenado{
+    display: none;
+}
+
+table{
+    background-color: #ffffffb9;
+    font-size: 1.2rem;
+}
+th,td{
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+th{
+    font-weight: bold;
+}
+
+button{
+    padding: .5rem 1rem;
+    margin: 0 8px;
+    border-radius: 5px;
+    background-color: #f46036;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+
+}
