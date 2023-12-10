@@ -5,6 +5,8 @@
     --navbar-color: #001427;
     --card-color :hsla(214, 48%, 64%, 0.723);
     --other: #f46036;
+    --correcto_color: #2ecc71;
+    --error_color : #e74c3c;
 }
 
 .index-body{
@@ -260,5 +262,108 @@ button{
     border: none;
     color: #fff;
     font-size: 1.1rem;
+    border: 1px solid rgba(0, 0, 0, 0.7);
 
+}
+
+.user__card{
+    background-color: var(--content-color);
+    padding: 1.5rem;
+    border-radius: .2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.userImageCard{
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+}
+
+.user__form{
+    background-color: var(--content-color);
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: .2rem;
+}
+
+.envoltorio-popup{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1021;
+    display: none;
+}
+
+.popup{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background: white;
+    position: relative;
+    border-radius: 5px;
+}
+.popup p{
+    text-wrap: balance;
+    text-decoration: none;
+    padding: 6px 10px;
+
+}
+
+.cerrar-popup{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+
+/*  */
+.formulario-control{
+    position: relative;
+}
+
+.formulario-control label {
+    display: block;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.formulario-control input{
+    display: block;
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.formulario-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.formulario-control.correcto input{
+    border-color: var(--correcto_color);
+}
+
+.formulario-control.error input{
+    border-color: var(--error_color);
+}
+
+.formulario-control small{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+    color: var(--error_color);
+
+}
+
+.formulario-control.error small{
+    visibility: visible;
 }

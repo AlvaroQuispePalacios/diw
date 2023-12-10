@@ -14,7 +14,6 @@ var indexedDB =
 // const NEW_USER = "New user";
 // const ADD_USER = "Add user";
 
-let saluda = "hola";
 
 let db;
 let dbUsuarioConectado;
@@ -102,6 +101,7 @@ function crearAlmacen(evento) {
 
 let username = document.getElementById("username");
 let password = document.getElementById("password");
+let password2 = document.getElementById('password2');
 let email = document.getElementById("email");
 let img;
 let rol;
@@ -152,9 +152,9 @@ function guardarUsuario() {
 
 
     if(rol == 'admin'){
-        window.location.href = "/DuckType-SignUp(DB)/pages/admin.html";
+        window.location.href = "/DuckType-SignUp(DB)2/pages/admin.html";
     }else if(rol == 'user'){
-        window.location.href = '/DuckType-SignUp(DB)/pages/user.html';
+        window.location.href = '/DuckType-SignUp(DB)2/pages/user.html';
     }
 
     document.getElementById("username").value = "";
@@ -214,19 +214,93 @@ function actualizarUsuario(objeto) {
     };
 }
 
+function esObligatorio(inputArray){
+
+    inputArray.forEach((input) => {
+        if(input.value.trim() === ''){
+            muestraError(input,`${prenNomInput(input)} es obligatorio` );
+        } else {
+            muestraCorrecto(input);
+        }
+
+    });
+}
+
+function compruebaLongitud(input, min, max){
+    if(input.value.length < min){
+        muestraError(input, `tiene que tener un minimo de ${min} caracteres`);
+    }else if (input.value.length > max) {
+        muestraError(input, `tiene que tener un max de ${max} caracteres`);
+    }else {
+        muestraCorrecto(input);
+    }
+}
+
+function esEmailValido(input){
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+    if(re.test(input.value.trim())) {
+        muestraCorrecto(input);
+
+    } else{
+        
+        let mensaje = `${prenNomInput(input)}  no tiene el formato correcto`;
+        muestraError(input ,mensaje);
+    };
+}
+
+function comprobarContrasenyaSonIguales(input1, input2){
+    if(input1.value != input2.value){
+        let mensaje = `${prenNomInput(input2)}  tiene que ser iguales ${prenNomInput(input1)}`; 
+        muestraError(input2 ,mensaje);
+    }else{
+        muestraCorrecto(input2);
+    }
+}
+
+function muestraError(input , mensaje){
+
+    // Guarda el padre del elemento, en este caso accedemos al padre de nombreusuario el cual es form-control
+    const formularioControl = input.parentElement;
+    //Le da el nombre a su clase como .form-control.error
+    formularioControl.className = 'formulario-control error';
+    const label = formularioControl.querySelector('label');
+    const small = formularioControl.querySelector('small');
+    small.innerText = label.innerText + ' ' + mensaje;
+
+}
+
+
+function muestraCorrecto(input){
+    const formularioControl = input.parentElement;
+    formularioControl.className = 'formulario-control correcto';
+}
+
+function prenNomInput(input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+
+let form = document.getElementById("form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // 
+    esObligatorio([username, email, password, password2])
+    
+    compruebaLongitud(username, 3, 15);
+    compruebaLongitud(password, 6, 25);
+    
+    esEmailValido(email);
+    comprobarContrasenyaSonIguales(password, password2);
+
+    guardarUsuario();
+    console.log("Usuario Guardado");
+});
+
 
 window.addEventListener("load", () => {
     iniciarBaseDeDatos();
     iniciardbUsuarioConectado();
 });
-
-let form = document.getElementById("form");
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // 
-    guardarUsuario();
-
-    console.log("Usuario Guardado");
-});
-
-console.log(window.location.href);

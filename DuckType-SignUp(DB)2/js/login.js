@@ -1,5 +1,5 @@
 let dbUsuarioConectado;
-const userImg = document.querySelector('#userImg');
+const userImg = document.querySelector('.userImg');
 const userName = document.querySelector('#userName');
 const logOut = document.querySelector('#logOut');
 let contador = 0;
@@ -47,7 +47,7 @@ function comprobarUsuarioConectado() {
             userName.textContent = cursor.value.username;
             userImg.setAttribute('src', cursor.value.image);
         }else {
-            location.href = "/DuckType-SignUp(DB)/index.html"
+            location.href = "/DuckType-SignUp(DB)2/index.html"
         }
 
     };

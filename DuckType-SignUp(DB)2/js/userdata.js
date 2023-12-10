@@ -1,9 +1,27 @@
 let db;
 let usuarioConectado;
 
-const userImg = document.querySelector("#userImg");
+const userImg = document.querySelector(".userImg");
 const userName = document.querySelector("#userName");
 const logOut = document.querySelector("#logOut");
+const userImageCard = document.querySelector('.userImageCard');
+const userUsernameCard = document.querySelector('.userUsernameCard');
+const guardarCambiosUsuario = document.querySelector('.guardarCambiosUsuario');
+
+const envoltorio = document.querySelector('.envoltorio-popup');
+const cerrar = document.querySelector('.cerrar-popup');
+
+//click sobre el boton para cerrar el pop-up
+cerrar.addEventListener('click', () => {
+    envoltorio.style.display = "none";
+});
+
+//click sobre el envoltorio cerrar el popup
+
+envoltorio.addEventListener('click', () => {
+    envoltorio.style.display = "none";
+});
+
 let contador = 0;
 
 // --------------------------------INICIAR BASES DE DATOS------------------------------
@@ -20,7 +38,7 @@ function iniciarBaseDeDatos() {
     //Si la base de datos existe va ir por aca
     conexion.addEventListener("success", (evento) => {
         iniciar(evento);
-        obtenerUsuarios();
+        // obtenerUsuarios();
     });
 }
 
@@ -47,6 +65,9 @@ function iniciardbUsuarioConectado() {
     conexion.addEventListener("success", (evento) => {
         iniciarUsuarioConectado(evento);
         comprobarUsuarioConectado();
+        // emailUsuario = obtenerEmailUsuarioConectado();
+        obtenerEmailUsuarioConectado();
+
     });
 
     // Si la base de datos no existe va a ser creada y luego abierta y mostrada por conexion.addEventListener('succes', funcion);
@@ -99,20 +120,89 @@ function usuarioLogOut() {
 
 logOut.addEventListener("click", usuarioLogOut);
 
+// Estas dos funciones
+function obtenerEmailUsuarioConectado() {
+    let transaccion = dbUsuarioConectado.transaction(
+        ["usuarioConectado"],
+        "readonly"
+    );
+    let almacen = transaccion.objectStore("usuarioConectado");
+    let conexion = almacen.openCursor();
+    conexion.onsuccess = (e) => {
+        let cursor = e.target.result;
+        if (cursor) {
+            obtenerDatosUsuarioConectado(cursor.value.email);
+        }
+    };
+}
 
-function obtenerUsuarios() {
-    let transaccion = db.transaction(["users"], "readonly");
-    let almacen = transaccion.objectStore("users");
+function obtenerDatosUsuarioConectado(email) {
+    let userEmail = document.querySelector('.userEmail');
+    let userUserName = document.querySelector('.userUserName');
+    let userUserImage = document.querySelector('.userUserImage');
+    let userRol = document.querySelector('.userRol');
+    let userPassword = document.querySelector('.userPassword');
+
+    let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readonly");
+    let almacen = transaccion.objectStore("usuarioConectado");
     let conexion = almacen.openCursor();
 
     conexion.onsuccess = (e) => {
         let cursor = e.target.result;
         if (cursor) {
-            console.log(cursor);
+            if (cursor.value.email == email) {
+                userEmail.value = cursor.value.email;
+                userUserName.value = cursor.value.username;
+                userUserImage.value = cursor.value.image;
+                userRol.value = cursor.value.rol;
+                userPassword.value = cursor.value.password;
+                userImageCard.setAttribute('src', cursor.value.image);
+                userUsernameCard.textContent = cursor.value.username;
+                console.log(email);
+            }
             cursor.continue();
         }
     };
+
 }
+
+
+guardarCambiosUsuario.addEventListener('click', () => {
+    let userEmail = document.querySelector('.userEmail');
+    let userUserName = document.querySelector('.userUserName');
+    let userUserImage = document.querySelector('.userUserImage');
+    let userRol = document.querySelector('.userRol');
+    let userPassword = document.querySelector('.userPassword');
+
+    let transaccion = db.transaction(["users"], "readwrite");
+    let almacen = transaccion.objectStore("users");
+
+    almacen.put({
+        email: userEmail.value,
+        image: userUserImage.value,
+        password: userPassword.value,
+        rol: userRol.value,
+        username: userUserName.value,
+    });
+
+    // userEmail.value = "";
+    // userEmail.textContent = "";
+
+    // userUserName.value = "";
+    // userUserName.textContent = "";
+
+    // userUserImage.value = "";
+    // userUserImage.textContent = "";
+
+    // userRol.value = "";
+    // userRol.textContent = "";
+    
+    // userPassword.value = "";
+    // userPassword.textContent = "";
+
+});
+
+
 
 window.addEventListener("load", () => {
     iniciarBaseDeDatos();
