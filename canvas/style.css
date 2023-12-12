@@ -1,0 +1,12 @@
+*{
+    margin:0 auto;
+}
+main {
+    width: fit-content;
+}
+canvas {
+    /* width: 300px; */
+    /* width: fit-content;
+    height: 300px; */
+    border: 1px solid black;
+}

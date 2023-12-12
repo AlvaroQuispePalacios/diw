@@ -1,0 +1,11 @@
+
+*{
+    margin: 0 auto;
+}
+main{
+    width: fit-content;
+}
+canvas{
+    border: 2px dashed rgb(82, 159, 227);
+    margin-top: 5rem;
+}
