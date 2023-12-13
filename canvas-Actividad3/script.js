@@ -1,9 +1,11 @@
 let canvas;
 let context;
-let sound = document.querySelector("#boing");
+// let sound = document.querySelector("#boing");
 let buttonStop = document.querySelector(".buttonStop");
 let buttonStart = document.querySelector(".buttonStart");
-
+let speedX = document.querySelector(".speedX");
+let speedY = document.querySelector(".speedY");
+let inputs = document.querySelectorAll(".speed");
 canvas = document.getElementById('2d-animation-canvas');
 context = canvas.getContext('2d');
 
@@ -27,18 +29,20 @@ let directionX = 2;
 let directionY = 2;
 
 
-function start(){
-    directionX  = 2;
-    directionY = 2;
+function start(x, y){
+
+    directionX  = x;
+    directionY = y;
+
     interval = setInterval(function(){
       if (ballX > 490 || ballX < 10){
         directionX *= -1;
-        sound.play();
+        // sound.play();
       }
     
       if (ballY < 10 || ballY > 290){
         directionY *= -1;
-        sound.play();
+        // sound.play();
       }
     
       ballX += directionX;
@@ -46,7 +50,7 @@ function start(){
       clearCanvas();
       draw(ballX, ballY);
     
-    }, 35);
+    }, 1);
 
     buttonStart.setAttribute('disabled', 'disabled');
 }
@@ -59,6 +63,14 @@ function stop(){
 }
 
 draw(ballX, ballY);
-start();
+start(2, 2);
 buttonStart.addEventListener('click', start);
 buttonStop.addEventListener('click', stop);
+
+inputs.forEach((input) => {
+    input.addEventListener('change', () => {
+        stop();
+        start(Number(speedX.value), Number(speedY.value));
+    })
+    console.log(input);
+});
