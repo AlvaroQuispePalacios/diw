@@ -57,7 +57,7 @@ function crearBaseDeDatosUsuarioConectado() {
     }
 }
 
-// --------------FUNCIONES BASE DE DATOS USUARIOS-----------------------
+// ----------------------------TOMAR INFORMACION DEL FORMULARIO-----------------------
 // Recoge la informacion del usuario en el register
 const roles = document.getElementById("roles");
 const images = document.getElementById("images");
@@ -93,7 +93,6 @@ function datosRegistroUsuario() {
     return datosUsuario;
 }
 //--------------------------------------------VALIDACION ---------------------------------
-
 function esObligatorio(datoUsuario) {
     if (datoUsuario === null || datoUsuario === undefined || datoUsuario.trim() === "") {
         console.log("Todos los campos son obligatorios");
@@ -119,7 +118,7 @@ function esEmailValido(datoUsuario) {
             return false;
         };
     }else{
-        return false
+        return false;
     }
 }
 
@@ -135,57 +134,72 @@ function esContrasenyaValida(datoUsuario) {
             console.log("La contraseña no cumple con los requisitos");
             return false;
         }
+    }else{
+        return false;
     }
 }
 
 function comprobarContrasenyaSonIguales(password, password2){
-    if(password != password2){
-        // let mensaje = `${prenNomInput(input2)}  tiene que ser iguales ${prenNomInput(input1)}`; 
-        // muestraError(input2 ,mensaje);
-        console.log("Las contraseñas tienen que ser iguales");
-        return false;
+    if(esObligatorio(password2)){
+        if(password != password2){
+            // let mensaje = `${prenNomInput(input2)}  tiene que ser iguales ${prenNomInput(input1)}`; 
+            // muestraError(input2 ,mensaje);
+            console.log("Las contraseñas tienen que ser iguales");
+            return false;
+        }else{
+            console.log("Las contraseñas son iguales");
+            return true;
+        }
     }else{
-        console.log("Las contraseñas son iguales");
-        return true;
+        return false;
     }
 }
 
 // 
 function esValido(){
     let datosUsuario = datosRegistroUsuario();
-    let datosUsuarioKeys = Object.keys(datosUsuario);
-    datosUsuarioKeys.forEach((e) => {
-        let datoUsuario = datosUsuario[e];
-        if (e == "userEmail") {
-            esEmailValido(datoUsuario);
-        }else if(e == "userPassword"){
-            esContrasenyaValida(datoUsuario);
-            // console.log('Clave: ' + e + ', Valor: ' + datoUsuario);
-        }else{
-            esObligatorio(datoUsuario);
-        }
-    });
+
+    let comprobarUsername = esObligatorio(datosUsuario.userName);
+    let emailValido = esEmailValido(datosUsuario.userEmail);
+    let contrasenyaValida = esContrasenyaValida(datosUsuario.userPassword);
+    let contrasenyaSonIguales = comprobarContrasenyaSonIguales(datosUsuario.userPassword, datosUsuario.userPassword2);
+    let comprobarRol = esObligatorio(datosUsuario.rol);
+    let comprobarAvatar = esObligatorio(datosUsuario.avatar);
+
+    return comprobarUsername && emailValido && contrasenyaValida && contrasenyaSonIguales && comprobarRol && comprobarAvatar;
 }
+
+// --------------------------FUNCIONES BASE DE DATOS USUARIO----------------------
 
 // Agrega el usuario el usuario en la base de datos
 function agregarUsuario() {
-    let datosUsuario = datosRegistroUsuario();
-    let datosUsuarioKeys = Object.keys(datosUsuario);
-    datosUsuarioKeys.forEach((e) => {
-        let datoUsuario = datosUsuario[e];
-        if (e == "userEmail") {
-            esEmailValido(datoUsuario);
-        }else if(e == "userPassword"){
-            esContrasenyaValida(datoUsuario);
-            // console.log('Clave: ' + e + ', Valor: ' + datoUsuario);
-        }else{
-            esObligatorio(datoUsuario);
-        }
-    });
-    // Agregar la validación del formulario Aquí
-    // console.log(datosUsuario.userEmail);
+    if(esValido()){
+        /* 
+        25-12-2023
+        Creado
+        - crearBasesDeDatos.js
+        - register.js
+        Hecho
+        - Crear base de datos en index y sign-up 
+        - sign-up Se crea la validacion de formulario
+        Para 26-12-2023
+        Intentar
+        - Agregar el usuario registrado a la base de datos usuarios y usuario conectado
+        - Mostrar informacion del lado del usuario y mostrar los usuarios al administrador
+        - Hacer el logOut
+        */
+        let datosUsuario = datosRegistroUsuario();
+        let datosUsuarioKeys = Object.keys(datosUsuario);
+        datosUsuarioKeys.forEach((e) => {
+            let datoUsuario = datosUsuario[e];
+            console.log('Clave: ' + e + ', Valor: ' + datoUsuario);
+    
+        });
+        let boolean = esValido();
+        console.log(boolean);
+        // Agregar la validación del formulario Aquí
+        // console.log(datosUsuario.userEmail);
+    }
 }
-
-
 crearBaseDeDatosUsuarios();
 crearBaseDeDatosUsuarioConectado();
