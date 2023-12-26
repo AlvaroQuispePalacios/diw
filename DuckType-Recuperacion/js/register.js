@@ -27,7 +27,7 @@ function crearBaseDeDatosUsuarios() {
         console.log("Base de datos abierta", usuarios);
         // 
         let btnRegistrarUsuario = document.getElementById("btnRegistrarUsuario");
-        btnRegistrarUsuario.addEventListener("click", agregarUsuario);
+        btnRegistrarUsuario.addEventListener("click", agregarUsuarioAUsuarios);
     }
 
     conexion.onerror = (error) => {
@@ -97,7 +97,7 @@ function esObligatorio(datoUsuario) {
     if (datoUsuario === null || datoUsuario === undefined || datoUsuario.trim() === "") {
         console.log("Todos los campos son obligatorios");
         return false;
-    }else{
+    } else {
         console.log("Esta completo");
     }
     return true;
@@ -106,18 +106,18 @@ function esObligatorio(datoUsuario) {
 function esEmailValido(datoUsuario) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if(esObligatorio(datoUsuario)){
-        if(re.test(datoUsuario.trim())) {
+    if (esObligatorio(datoUsuario)) {
+        if (re.test(datoUsuario.trim())) {
             // muestraCorrecto(input);
             console.log("El email es valido");
             return true;
-        } else{
+        } else {
             // let mensaje = `${prenNomInput(input)}  no tiene el formato correcto`;
             // muestraError(input ,mensaje);
             console.log("El email no es valido");
             return false;
         };
-    }else{
+    } else {
         return false;
     }
 }
@@ -126,7 +126,7 @@ function esContrasenyaValida(datoUsuario) {
     // Requisitos: al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y un carácter especial
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
 
-    if(esObligatorio(datoUsuario)){
+    if (esObligatorio(datoUsuario)) {
         if (re.test(datoUsuario)) {
             console.log("La contraseña es válida");
             return true;
@@ -134,29 +134,29 @@ function esContrasenyaValida(datoUsuario) {
             console.log("La contraseña no cumple con los requisitos");
             return false;
         }
-    }else{
+    } else {
         return false;
     }
 }
 
-function comprobarContrasenyaSonIguales(password, password2){
-    if(esObligatorio(password2)){
-        if(password != password2){
+function comprobarContrasenyaSonIguales(password, password2) {
+    if (esObligatorio(password2)) {
+        if (password != password2) {
             // let mensaje = `${prenNomInput(input2)}  tiene que ser iguales ${prenNomInput(input1)}`; 
             // muestraError(input2 ,mensaje);
             console.log("Las contraseñas tienen que ser iguales");
             return false;
-        }else{
+        } else {
             console.log("Las contraseñas son iguales");
             return true;
         }
-    }else{
+    } else {
         return false;
     }
 }
 
 // 
-function esValido(){
+function esValido() {
     let datosUsuario = datosRegistroUsuario();
 
     let comprobarUsername = esObligatorio(datosUsuario.userName);
@@ -169,37 +169,69 @@ function esValido(){
     return comprobarUsername && emailValido && contrasenyaValida && contrasenyaSonIguales && comprobarRol && comprobarAvatar;
 }
 
-// --------------------------FUNCIONES BASE DE DATOS USUARIO----------------------
+// --------------------------ENCRIPTAR CONTRASEÑA----------------------
+const SECRET_KEY = "calabaza";
 
+// Función para encriptar texto
+function encriptar(text, key) {
+    let encriptado = CryptoJS.AES.encrypt(text, key);
+    return encriptado.toString();
+}
+
+// Función para desencriptar texto
+function desencriptar(encryptedText, key) {
+    let desencriptado = CryptoJS.AES.decrypt(encryptedText, key);
+    return desencriptado.toString(CryptoJS.enc.Utf8);
+}
+
+
+// --------------------------FUNCIONES BASE DE DATOS USUARIO----------------------
 // Agrega el usuario el usuario en la base de datos
-function agregarUsuario() {
-    if(esValido()){
-        /* 
-        25-12-2023
-        Creado
-        - crearBasesDeDatos.js
-        - register.js
-        Hecho
-        - Crear base de datos en index y sign-up 
-        - sign-up Se crea la validacion de formulario
-        Para 26-12-2023
-        Intentar
-        - Agregar el usuario registrado a la base de datos usuarios y usuario conectado
-        - Mostrar informacion del lado del usuario y mostrar los usuarios al administrador
-        - Hacer el logOut
-        */
+function agregarUsuarioAUsuarios() {
+    if (esValido()) {
         let datosUsuario = datosRegistroUsuario();
-        let datosUsuarioKeys = Object.keys(datosUsuario);
-        datosUsuarioKeys.forEach((e) => {
-            let datoUsuario = datosUsuario[e];
-            console.log('Clave: ' + e + ', Valor: ' + datoUsuario);
-    
-        });
-        let boolean = esValido();
-        console.log(boolean);
-        // Agregar la validación del formulario Aquí
-        // console.log(datosUsuario.userEmail);
+        let passwordEncriptada = encriptar(datosUsuario.userPassword, SECRET_KEY);
+
+        let transaccion = usuarios.transaction(["usuarios"], "readwrite");
+        let coleccionDeObjetos = transaccion.objectStore("usuarios");
+        let conexion = coleccionDeObjetos.add(
+            {
+                "email": datosUsuario.userEmail,
+                "username": datosUsuario.userName,
+                "password": encriptar(datosUsuario.userPassword, SECRET_KEY),
+                "rol": datosUsuario.rol,
+                "avatar": datosUsuario.avatar
+            }
+        );
+        // 
+        agregarUsuarioAUsuarioConectado(datosUsuario);
+        console.log(`Contraseña encriptada ${passwordEncriptada}`);
+        console.log(`Contraseña desencriptada ${desencriptar(passwordEncriptada, SECRET_KEY)}`);
+
+        if(datosUsuario.rol == "admin"){
+            window.location.href = "../pages/admin.html";
+        }else if(datosUsuario.rol == "user"){
+            window.location.href = "../pages/userIndex.html";
+        }
+        
     }
 }
+
+// --------------------------FUNCIONES BASE DE DATOS USUARIO CONECTADO----------------------
+function agregarUsuarioAUsuarioConectado(datosUsuario){
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.add(
+        {
+            "email": datosUsuario.userEmail,
+            "username": datosUsuario.userName,
+            "password": encriptar(datosUsuario.userPassword, SECRET_KEY),
+            "rol": datosUsuario.rol,
+            "avatar": datosUsuario.avatar
+        }
+    );
+}
+
+
 crearBaseDeDatosUsuarios();
 crearBaseDeDatosUsuarioConectado();

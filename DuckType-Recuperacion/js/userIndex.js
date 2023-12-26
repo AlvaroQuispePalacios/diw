@@ -48,6 +48,7 @@ function crearBaseDeDatosUsuarioConectado(){
         usuarioConectado = conexion.result;
         console.log("Base de datos abierta", usuarioConectado);
         leerDatosDelUsuarioDeUsuarioConectado();
+
     }
 
     conexion.onerror = (error) =>{
@@ -58,7 +59,9 @@ function crearBaseDeDatosUsuarioConectado(){
 // ------------------------FUNCIONES DE BASE DE DATOS USUARIO CONECTADO--------------------------
 /* 
     Mira si hay un usuario conectado: 
-    - Si hay un usuario conectado lo redirige a su pagina dependiendo de su rol
+    - Si hay un usuario conectado muestra la informacion de este y el usuario puede realizar las acciones designadas para este
+    - Si no hay un usuario conectado regresa al index
+    - Si el usuario que intenta entrar tiene el rol de admin este no podra entrar a user.html(Se redireccionara a la pagina de administrador)
 */
 function leerDatosDelUsuarioDeUsuarioConectado(){
     let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readonly");
@@ -71,11 +74,32 @@ function leerDatosDelUsuarioDeUsuarioConectado(){
             if(cursor.value.rol == "admin"){
                 window.location.href = "../pages/admin.html"
             }else if(cursor.value.rol == "user"){
-                window.location.href = "../pages/userIndex.html"
+                mostrarInformacionDelUsuarioEnLaWeb(cursor.value);
             }
+        }else{
+            console.log("No hay usuario conectado en este momento");
+            window.location.href = "../index.html";
         }
     };
 }
 
+function mostrarInformacionDelUsuarioEnLaWeb(objectUser){
+    let userNameWeb = document.getElementById("userNameWeb");
+    let userAvatarWeb = document.getElementById("userAvatarWeb");
+    userNameWeb.textContent = objectUser.username;
+    userAvatarWeb.setAttribute("src", objectUser.avatar);
+    
+}
+
+// -------------------------LOGOUT-------------------------------
+let logOut = document.getElementById("logOut");
+function closeSession(){
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let eliminarUsuario = coleccionDeObjetos.clear();
+}
+logOut.addEventListener("click", closeSession);
+
+// 
 crearBaseDeDatosUsuarios();
 crearBaseDeDatosUsuarioConectado();

@@ -1,210 +1,107 @@
-let db;
+// API
+var indexedDB =
+    window.indexedDB ||
+    window.mozIndexedDB ||
+    window.webkitIndexedDB ||
+    window.msIndexedDB ||
+    window.shimIndexedDB;
+
+// Bases de datos 
+let usuarios;
 let usuarioConectado;
 
-const userImg = document.querySelector(".userImg");
-const userName = document.querySelector("#userName");
-const logOut = document.querySelector("#logOut");
-const userImageCard = document.querySelector('.userImageCard');
-const userUsernameCard = document.querySelector('.userUsernameCard');
-const guardarCambiosUsuario = document.querySelector('.guardarCambiosUsuario');
+//  ------------------------------BASE DE DATOS USUARIOS------------------
+function crearBaseDeDatosUsuarios() {
+    let conexion = indexedDB.open("usuarios", 1);
 
-const envoltorio = document.querySelector('.envoltorio-popup');
-const cerrar = document.querySelector('.cerrar-popup');
+    // Crea o actualiza la estructura de la base de datos
+    conexion.onupgradeneeded = (e) =>{
+        usuarios = e.target.result;
+        console.log("Base de datos creada", usuarios);
+        let baseDeDatosUsuarios = usuarios.createObjectStore("usuarios",{keyPath: "email"});
+    }
 
-//click sobre el boton para cerrar el pop-up
-cerrar.addEventListener('click', () => {
-    envoltorio.style.display = "none";
-});
+    // 
+    conexion.onsuccess = () => {
+        usuarios = conexion.result;
+        console.log("Base de datos abierta", usuarios);
+    }
 
-//click sobre el envoltorio cerrar el popup
-
-envoltorio.addEventListener('click', () => {
-    envoltorio.style.display = "none";
-});
-
-let contador = 0;
-
-// --------------------------------INICIAR BASES DE DATOS------------------------------
-// BASE DE DATOS ALVARO
-function iniciarBaseDeDatos() {
-    /* 
-          Conexion a la base de datos.
-          indexDB.open('NombreBaseDeDatos', Version(Opcional))
-              */
-    var conexion = indexedDB.open("Alvaro");
-
-    conexion.addEventListener("error", mostrarError);
-
-    //Si la base de datos existe va ir por aca
-    conexion.addEventListener("success", (evento) => {
-        iniciar(evento);
-        // obtenerUsuarios();
-    });
+    conexion.onerror = (error) =>{
+        console.log("Error: ", error);
+    }
 }
 
-function mostrarError(evento) {
-    console.log("Tenemos un error: " + evento.code + " / " + evento.message);
+//  ------------------------------BASE DE DATOS USUARIO CONECTADO------------------
+function crearBaseDeDatosUsuarioConectado(){
+    let conexion = indexedDB.open("usuarioConectado", 1);
+
+    // Crea o actualiza la estructura de la base de datos
+    conexion.onupgradeneeded = (e) =>{
+        usuarioConectado = e.target.result;
+        console.log("Base de datos creada", usuarioConectado);
+        let baseDeDatosUsuarioConectado = usuarioConectado.createObjectStore("usuarioConectado",{keyPath: "email"});
+    }
+
+    // 
+    conexion.onsuccess = () => {
+        usuarioConectado = conexion.result;
+        console.log("Base de datos abierta", usuarioConectado);
+        leerDatosDelUsuarioDeUsuarioConectado();
+
+    }
+
+    conexion.onerror = (error) =>{
+        console.log("Error: ", error);
+    }
 }
 
-function iniciar(evento) {
-    db = evento.target.result;
-    console.log("Base de datos fue abierta", db);
-}
-
-// BASE DE DATOS USUARIO CONECTADO
-function iniciardbUsuarioConectado() {
-    /* 
-          Conexion a la base de datos.
-          indexDB.open('NombreBaseDeDatos', Version(Opcional))
-      */
-    let conexion = indexedDB.open("UsuarioConectado");
-
-    conexion.addEventListener("error", mostrarErrorUsuarioConectado);
-
-    //Si la base de datos existe va ir por aca
-    conexion.addEventListener("success", (evento) => {
-        iniciarUsuarioConectado(evento);
-        comprobarUsuarioConectado();
-        // emailUsuario = obtenerEmailUsuarioConectado();
-        obtenerEmailUsuarioConectado();
-
-    });
-
-    // Si la base de datos no existe va a ser creada y luego abierta y mostrada por conexion.addEventListener('succes', funcion);
-    // conexion.addEventListener("upgradeneeded", crearAlmacenUsuarioConectado);
-}
-
-function mostrarErrorUsuarioConectado(evento) {
-    console.log("Tenemos un error: " + evento.code + " / " + evento.message);
-}
-
-function iniciarUsuarioConectado(evento) {
-    dbUsuarioConectado = evento.target.result;
-    console.log("Base de datos fue abierta", dbUsuarioConectado);
-}
-
-// ------------------------------------------------------
-
-function comprobarUsuarioConectado() {
-    let transaccion = dbUsuarioConectado.transaction(
-        ["usuarioConectado"],
-        "readonly"
-    );
-    let almacen = transaccion.objectStore("usuarioConectado");
-
-    let conexion = almacen.openCursor();
+// ------------------------FUNCIONES DE BASE DE DATOS USUARIO CONECTADO--------------------------
+/* 
+    Mira si hay un usuario conectado: 
+    - Si hay un usuario conectado muestra la informacion de este y el usuario puede realizar las acciones designadas para este
+    - Si no hay un usuario conectado regresa al index
+    - Si el usuario que intenta entrar tiene el rol de admin este no podra entrar a user.html(Se redireccionara a la pagina de administrador)
+*/
+function leerDatosDelUsuarioDeUsuarioConectado(){
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.openCursor();
     conexion.onsuccess = (e) => {
         let cursor = e.target.result;
-        if (cursor) {
-            contador = 1;
-        }
-
-        if (contador == 1) {
-            userName.textContent = cursor.value.username;
-            userImg.setAttribute("src", cursor.value.image);
-        } else {
-            location.href = "/DuckType-SignUp(DB)/index.html";
-        }
-    };
-}
-
-function usuarioLogOut() {
-    let transaccion = dbUsuarioConectado.transaction(
-        ["usuarioConectado"],
-        "readwrite"
-    );
-    let almacen = transaccion.objectStore("usuarioConectado");
-    let conexion = almacen.clear();
-    contador = 0;
-}
-
-logOut.addEventListener("click", usuarioLogOut);
-
-// Estas dos funciones
-function obtenerEmailUsuarioConectado() {
-    let transaccion = dbUsuarioConectado.transaction(
-        ["usuarioConectado"],
-        "readonly"
-    );
-    let almacen = transaccion.objectStore("usuarioConectado");
-    let conexion = almacen.openCursor();
-    conexion.onsuccess = (e) => {
-        let cursor = e.target.result;
-        if (cursor) {
-            obtenerDatosUsuarioConectado(cursor.value.email);
-        }
-    };
-}
-
-function obtenerDatosUsuarioConectado(email) {
-    let userEmail = document.querySelector('.userEmail');
-    let userUserName = document.querySelector('.userUserName');
-    let userUserImage = document.querySelector('.userUserImage');
-    let userRol = document.querySelector('.userRol');
-    let userPassword = document.querySelector('.userPassword');
-
-    let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readonly");
-    let almacen = transaccion.objectStore("usuarioConectado");
-    let conexion = almacen.openCursor();
-
-    conexion.onsuccess = (e) => {
-        let cursor = e.target.result;
-        if (cursor) {
-            if (cursor.value.email == email) {
-                userEmail.value = cursor.value.email;
-                userUserName.value = cursor.value.username;
-                userUserImage.value = cursor.value.image;
-                userRol.value = cursor.value.rol;
-                userPassword.value = cursor.value.password;
-                userImageCard.setAttribute('src', cursor.value.image);
-                userUsernameCard.textContent = cursor.value.username;
-                console.log(email);
+        if(cursor){
+            console.log(cursor.value);
+            if(cursor.value.rol == "admin"){
+                window.location.href = "../pages/admin.html"
+            }else if(cursor.value.rol == "user"){
+                mostrarInformacionDelUsuarioEnLaWeb(cursor.value);
             }
-            cursor.continue();
+        }else{
+            console.log("No hay usuario conectado en este momento");
+            window.location.href = "../index.html";
         }
     };
-
 }
 
+function mostrarInformacionDelUsuarioEnLaWeb(objectUser){
+    // HEADER
+    let userNameWeb = document.getElementById("userNameWeb");
+    let userAvatarWeb = document.getElementById("userAvatarWeb");
+    userNameWeb.textContent = objectUser.username;
+    userAvatarWeb.setAttribute("src", objectUser.avatar);
+    // BODY
+    // Falta agregar los settings que el usuario pueda modificar sus datos
+}
 
-guardarCambiosUsuario.addEventListener('click', () => {
-    let userEmail = document.querySelector('.userEmail');
-    let userUserName = document.querySelector('.userUserName');
-    let userUserImage = document.querySelector('.userUserImage');
-    let userRol = document.querySelector('.userRol');
-    let userPassword = document.querySelector('.userPassword');
+// -------------------------LOGOUT-------------------------------
+let logOut = document.getElementById("logOut");
+function closeSession(){
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let eliminarUsuario = coleccionDeObjetos.clear();
+}
+logOut.addEventListener("click", closeSession);
 
-    let transaccion = db.transaction(["users"], "readwrite");
-    let almacen = transaccion.objectStore("users");
-
-    almacen.put({
-        email: userEmail.value,
-        image: userUserImage.value,
-        password: userPassword.value,
-        rol: userRol.value,
-        username: userUserName.value,
-    });
-
-    // userEmail.value = "";
-    // userEmail.textContent = "";
-
-    // userUserName.value = "";
-    // userUserName.textContent = "";
-
-    // userUserImage.value = "";
-    // userUserImage.textContent = "";
-
-    // userRol.value = "";
-    // userRol.textContent = "";
-    
-    // userPassword.value = "";
-    // userPassword.textContent = "";
-
-});
-
-
-
-window.addEventListener("load", () => {
-    iniciarBaseDeDatos();
-    iniciardbUsuarioConectado();
-});
+// 
+crearBaseDeDatosUsuarios();
+crearBaseDeDatosUsuarioConectado();
