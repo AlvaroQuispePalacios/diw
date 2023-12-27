@@ -50,6 +50,7 @@ function crearBaseDeDatosUsuarioConectado() {
     conexion.onsuccess = () => {
         usuarioConectado = conexion.result;
         console.log("Base de datos abierta", usuarioConectado);
+        leerDatosDelUsuarioDeUsuarioConectado();
     }
 
     conexion.onerror = (error) => {
@@ -79,15 +80,15 @@ images.addEventListener("click", (e) => {
 });
 
 function datosRegistroUsuario() {
-    const userName = document.getElementById("userName");
-    const userPassword = document.getElementById("userPassword");
-    const userPassword2 = document.getElementById("userPassword2");
-    const userEmail = document.getElementById("userEmail");
+    const userNameRegister = document.getElementById("userNameRegister");
+    const userPasswordRegister = document.getElementById("userPasswordRegister");
+    const userPassword2Register = document.getElementById("userPassword2Register");
+    const userEmailRegister = document.getElementById("userEmailRegister");
     let datosUsuario = new Array();
-    datosUsuario.userEmail = userEmail.value;
-    datosUsuario.userName = userName.value;
-    datosUsuario.userPassword = userPassword.value;
-    datosUsuario.userPassword2 = userPassword2.value;
+    datosUsuario.userEmail = userEmailRegister.value;
+    datosUsuario.userName = userNameRegister.value;
+    datosUsuario.userPassword = userPasswordRegister.value;
+    datosUsuario.userPassword2 = userPassword2Register.value;
     datosUsuario.rol = rol;
     datosUsuario.avatar = avatar;
     return datosUsuario;
@@ -186,39 +187,74 @@ function desencriptar(encryptedText, key) {
 
 
 // --------------------------FUNCIONES BASE DE DATOS USUARIO----------------------
-// Agrega el usuario el usuario en la base de datos
+// Agrega el usuario el usuario en la base de datos, toma en cuenta si todos los campos del registro estan completos, cumplen con las condiciones puestas a los inputs y verifica que el email no este registrado
 function agregarUsuarioAUsuarios() {
     if (esValido()) {
         let datosUsuario = datosRegistroUsuario();
-        let passwordEncriptada = encriptar(datosUsuario.userPassword, SECRET_KEY);
+        comprobarEmailRepetido(datosUsuario.userEmail, function (emailRepetido, error) {
+            if (error) {
+                console.error("Error:", error);
+            } else {
+                if (emailRepetido) {
+                    console.log("El email está repetido.");
+                } else {
+                    console.log("El email no está repetido.");
+                    let passwordEncriptada = encriptar(datosUsuario.userPassword, SECRET_KEY);
 
-        let transaccion = usuarios.transaction(["usuarios"], "readwrite");
-        let coleccionDeObjetos = transaccion.objectStore("usuarios");
-        let conexion = coleccionDeObjetos.add(
-            {
-                "email": datosUsuario.userEmail,
-                "username": datosUsuario.userName,
-                "password": encriptar(datosUsuario.userPassword, SECRET_KEY),
-                "rol": datosUsuario.rol,
-                "avatar": datosUsuario.avatar
+                    let transaccion = usuarios.transaction(["usuarios"], "readwrite");
+                    let coleccionDeObjetos = transaccion.objectStore("usuarios");
+                    let conexion = coleccionDeObjetos.add(
+                        {
+                            "email": datosUsuario.userEmail,
+                            "username": datosUsuario.userName,
+                            "password": encriptar(datosUsuario.userPassword, SECRET_KEY),
+                            "rol": datosUsuario.rol,
+                            "avatar": datosUsuario.avatar
+                        }
+                    );
+                    // 
+                    agregarUsuarioAUsuarioConectado(datosUsuario);
+                    console.log(`Contraseña encriptada ${passwordEncriptada}`);
+                    console.log(`Contraseña desencriptada ${desencriptar(passwordEncriptada, SECRET_KEY)}`);
+
+                    if (datosUsuario.rol == "admin") {
+                        window.location.href = "../pages/admin.html";
+                    } else if (datosUsuario.rol == "user") {
+                        window.location.href = "../pages/userIndex.html";
+                    }
+                }
             }
-        );
-        // 
-        agregarUsuarioAUsuarioConectado(datosUsuario);
-        console.log(`Contraseña encriptada ${passwordEncriptada}`);
-        console.log(`Contraseña desencriptada ${desencriptar(passwordEncriptada, SECRET_KEY)}`);
-
-        if(datosUsuario.rol == "admin"){
-            window.location.href = "../pages/admin.html";
-        }else if(datosUsuario.rol == "user"){
-            window.location.href = "../pages/userIndex.html";
-        }
-        
+        });
+    } else {
+        console.log("El usuario no se puede agregar");
     }
 }
 
+function comprobarEmailRepetido(emailRegister, callback) {
+    let transaccion = usuarios.transaction(["usuarios"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarios");
+    let conexion = coleccionDeObjetos.openCursor(emailRegister);
+
+    conexion.onsuccess = (e) => {
+        let cursor = e.target.result;
+        if (cursor) {
+            // Se encontro el email
+            callback(true);
+        } else {
+            // No se encontro el email
+            callback(false);
+        }
+    }
+
+    conexion.onerror = (e) => {
+        console.error("Error al comprobar email repetido:", e.target.error);
+        callback(null, e.target.error);
+    };
+}
+
+
 // --------------------------FUNCIONES BASE DE DATOS USUARIO CONECTADO----------------------
-function agregarUsuarioAUsuarioConectado(datosUsuario){
+function agregarUsuarioAUsuarioConectado(datosUsuario) {
     let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
     let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
     let conexion = coleccionDeObjetos.add(
@@ -230,6 +266,25 @@ function agregarUsuarioAUsuarioConectado(datosUsuario){
             "avatar": datosUsuario.avatar
         }
     );
+}
+
+function leerDatosDelUsuarioDeUsuarioConectado() {
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.openCursor();
+    conexion.onsuccess = (e) => {
+        let cursor = e.target.result;
+        if (cursor) {
+            console.log(cursor.value);
+            if (cursor.value.rol == "admin") {
+                window.location.href = "../pages/admin.html"
+            } else if (cursor.value.rol == "user") {
+                window.location.href = "../pages/userIndex.html"
+            }
+        } else {
+            console.log("No conectados");
+        }
+    };
 }
 
 

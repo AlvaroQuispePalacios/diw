@@ -367,3 +367,9 @@ button{
 .formulario-control.error small{
     visibility: visible;
 }
+
+/* -----------------FORMULARIO LOGIN -----------------*/
+#formLogin{
+    padding: 4rem;
+    padding-top: 1rem;
+}

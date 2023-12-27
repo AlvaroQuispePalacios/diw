@@ -1,69 +1,159 @@
-let dbUsuarioConectado;
-const userImg = document.querySelector('.userImg');
-const userName = document.querySelector('#userName');
-const logOut = document.querySelector('#logOut');
-let contador = 0;
-function iniciardbUsuarioConectado() {
-    /* 
-        Conexion a la base de datos.
-        indexDB.open('NombreBaseDeDatos', Version(Opcional))
-    */
-    let conexion = indexedDB.open("UsuarioConectado");
+// API
+var indexedDB =
+    window.indexedDB ||
+    window.mozIndexedDB ||
+    window.webkitIndexedDB ||
+    window.msIndexedDB ||
+    window.shimIndexedDB;
 
-    conexion.addEventListener("error", mostrarErrorUsuarioConectado);
+// Bases de datos 
+let usuarios;
+let usuarioConectado;
 
-    //Si la base de datos existe va ir por aca
-    conexion.addEventListener("success", (evento) => {
-        iniciarUsuarioConectado(evento);
-        comprobarUsuarioConectado();
-    });
+//  ------------------------------BASE DE DATOS USUARIOS------------------
+function crearBaseDeDatosUsuarios() {
+    let conexion = indexedDB.open("usuarios", 1);
 
-    // Si la base de datos no existe va a ser creada y luego abierta y mostrada por conexion.addEventListener('succes', funcion);
-    // conexion.addEventListener("upgradeneeded", crearAlmacenUsuarioConectado);
+    // Crea o actualiza la estructura de la base de datos
+    conexion.onupgradeneeded = (e) => {
+        usuarios = e.target.result;
+        console.log("Base de datos creada", usuarios);
+        let baseDeDatosUsuarios = usuarios.createObjectStore("usuarios", { keyPath: "email" });
+    }
+
+    // 
+    conexion.onsuccess = () => {
+        usuarios = conexion.result;
+        console.log("Base de datos abierta", usuarios);
+        // 
+        let btnLogin = document.getElementById("btnLogin");
+        btnLogin.addEventListener("click", buscarUsuarioEnUsuarios);
+
+    }
+
+    conexion.onerror = (error) => {
+        console.log("Error: ", error);
+    }
+}
+
+//  ------------------------------BASE DE DATOS USUARIO CONECTADO------------------
+function crearBaseDeDatosUsuarioConectado() {
+    let conexion = indexedDB.open("usuarioConectado", 1);
+
+    // Crea o actualiza la estructura de la base de datos
+    conexion.onupgradeneeded = (e) => {
+        usuarioConectado = e.target.result;
+        console.log("Base de datos creada", usuarioConectado);
+        let baseDeDatosUsuarioConectado = usuarioConectado.createObjectStore("usuarioConectado", { keyPath: "email" });
+    }
+
+    // 
+    conexion.onsuccess = () => {
+        usuarioConectado = conexion.result;
+        console.log("Base de datos abierta", usuarioConectado);
+        leerDatosDelUsuarioDeUsuarioConectado();
+    }
+
+    conexion.onerror = (error) => {
+        console.log("Error: ", error);
+    }
+}
+
+// --------------------------ENCRIPTAR CONTRASEÑA----------------------
+const SECRET_KEY = "calabaza";
+
+// Función para encriptar texto
+function encriptar(text, key) {
+    let encriptado = CryptoJS.AES.encrypt(text, key);
+    return encriptado.toString();
+}
+
+// Función para desencriptar texto
+function desencriptar(encryptedText, key) {
+    let desencriptado = CryptoJS.AES.decrypt(encryptedText, key);
+    return desencriptado.toString(CryptoJS.enc.Utf8);
+}
+
+// ----------------------------TOMAR INFORMACION DEL FORMULARIO-----------------------
+
+function datosLoginUsuario() {
+    const userEmailLogin = document.getElementById("userEmailLogin");
+    const userPasswordLogin = document.getElementById("userPasswordLogin");
+    let datosUsuario = new Array();
+    datosUsuario.userEmail = userEmailLogin.value;
+    datosUsuario.userPassword = userPasswordLogin.value;
+    return datosUsuario;
+}
+
+// --------------------------FUNCIONES BASE DE DATOS USUARIO----------------------
+// Buscamos el usuario, si el usuario existe entonces desencriptamos la contraseña del usuarioDB encontrado y la comparamos con la introducida por el usuarioLogin
+function buscarUsuarioEnUsuarios() {
+    let datosUsuario = datosLoginUsuario();
+    let transaccion = usuarios.transaction(["usuarios"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarios");
+    let conexion = coleccionDeObjetos.get(datosUsuario.userEmail);
+    conexion.onsuccess = () => {
+        let usuarioRecuperado = conexion.result;
+        if(usuarioRecuperado){
+            if(comprobarPassword(datosUsuario.userPassword, usuarioRecuperado.password)){
+                agregarUsuarioAUsuarioConectado(usuarioRecuperado);
+                if(usuarioRecuperado.rol == "admin"){
+                    window.location.href = "../pages/admin.html";
+                }else if(usuarioRecuperado.rol == "user"){
+                    window.location.href = "../pages/userIndex.html";
+                }
+            }
+        }else{
+            console.log("El usuario no se encuentra");
+        }
+    };
 
 }
 
-function mostrarErrorUsuarioConectado(evento) {
-    console.log("Tenemos un error: " + evento.code + " / " + evento.message);
+function comprobarPassword(passwordEntered, databasePassword){
+    let databasePasswordDecrypt = desencriptar(databasePassword, SECRET_KEY);
+    if(passwordEntered == databasePasswordDecrypt){
+        return true;
+    }else {
+        console.log("Vuelva a escribir la contraseña");
+        return false;
+    }
 }
 
-function iniciarUsuarioConectado(evento) {
-    dbUsuarioConectado = evento.target.result;
-    console.log("Base de datos fue abierta", dbUsuarioConectado);
+// --------------------------FUNCIONES BASE DE DATOS USUARIO CONECTADO----------------------
+function agregarUsuarioAUsuarioConectado(datosUsuario) {
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.add(
+        {
+            "email": datosUsuario.email,
+            "username": datosUsuario.username,
+            "password": encriptar(datosUsuario.password, SECRET_KEY),
+            "rol": datosUsuario.rol,
+            "avatar": datosUsuario.avatar
+        }
+    );
 }
-
-function comprobarUsuarioConectado() {
-    let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readonly");
-    let almacen = transaccion.objectStore("usuarioConectado");
-    
-    let conexion = almacen.openCursor();
+// Comprueba si hay un usuario conectado, si hay un usuario conectado lo manda al inicio dependiendo de su rol
+function leerDatosDelUsuarioDeUsuarioConectado(){
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.openCursor();
     conexion.onsuccess = (e) => {
         let cursor = e.target.result;
-        if (cursor) {
-            contador = 1;
+        if(cursor){
+            console.log(cursor.value);
+            if(cursor.value.rol == "admin"){
+                window.location.href = "../pages/admin.html"
+            }else if(cursor.value.rol == "user"){
+                window.location.href = "../pages/userIndex.html"
+            }
+        }else{
+            console.log("No conectados");
         }
-        
-        if(contador == 1){
-            userName.textContent = cursor.value.username;
-            userImg.setAttribute('src', cursor.value.image);
-        }else {
-            location.href = "/DuckType-SignUp(DB)2/index.html"
-        }
-
     };
 }
 
-function usuarioLogOut() {
-    let transaccion = dbUsuarioConectado.transaction(["usuarioConectado"], "readwrite");
-    let almacen = transaccion.objectStore("usuarioConectado");
-    let conexion = almacen.clear();
-    contador = 0;
-}
 
-logOut.addEventListener('click', usuarioLogOut)
-
-
-window.addEventListener('load', () => {
-    iniciardbUsuarioConectado();
-
-});
+crearBaseDeDatosUsuarios();
+crearBaseDeDatosUsuarioConectado();

@@ -6,7 +6,9 @@ HECHO
 - Crear base de datos en index y sign-up 
 - sign-up Se crea la validacion de formulario
 
-Para 26-12-2023
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+26-12-2023
 CREADO
 - userIndex.html
 - userData.html
@@ -22,5 +24,17 @@ HECHO
 INTENTAR PARA 27-12-2023
 - Hacer que el usuario pueda modificar sus datos
 - Crear el login
-- 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+27-12-2023
+CREADO 
+- login.html
+- login.js
+HECHO
+- El login funciona
+- Si un usuario se encuentra conectado y intenta entrar a un pagina que no le corresponda por su rol se redirige automaticamente a su pagina index por defecto dependiendo de su rol
+- Si el email ya se encuentra en la base de datos no te permite crear una cuenta con el email(CALLBACK WTF)
+INTENTAR PARA 28-12-2023
+- No sé
+- 
