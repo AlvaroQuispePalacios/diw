@@ -199,7 +199,7 @@ function agregarUsuarioAUsuarios() {
                     console.log("El email está repetido.");
                 } else {
                     console.log("El email no está repetido.");
-                    let passwordEncriptada = encriptar(datosUsuario.userPassword, SECRET_KEY);
+                    // let passwordEncriptada = encriptar(datosUsuario.userPassword, SECRET_KEY);
 
                     let transaccion = usuarios.transaction(["usuarios"], "readwrite");
                     let coleccionDeObjetos = transaccion.objectStore("usuarios");
@@ -214,8 +214,8 @@ function agregarUsuarioAUsuarios() {
                     );
                     // 
                     agregarUsuarioAUsuarioConectado(datosUsuario);
-                    console.log(`Contraseña encriptada ${passwordEncriptada}`);
-                    console.log(`Contraseña desencriptada ${desencriptar(passwordEncriptada, SECRET_KEY)}`);
+                    // console.log(`Contraseña encriptada ${passwordEncriptada}`);
+                    // console.log(`Contraseña desencriptada ${desencriptar(passwordEncriptada, SECRET_KEY)}`);
 
                     if (datosUsuario.rol == "admin") {
                         window.location.href = "../pages/admin.html";

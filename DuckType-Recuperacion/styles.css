@@ -93,47 +93,6 @@ h1{
     justify-content: end;
 }
 
-@media (min-width: 576px) {
-
-    .card-img{
-        max-width: 100%;
-    }
-    .content{
-        max-width: 50%;
-    }
-}
-/*  Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .card{
-        flex-direction: row;
-    }
-    .card-img{
-        max-width: 35%;
-    }
-    .content{
-        max-width: 100%;
-    }
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .nav-link:hover{
-        color: #fff;
-        background-color: transparent;
-    }
-
-}   
-
- /* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-
-}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-
-}
-
-
 /*-------------------Modificaciones en la pagina Sign Up-------------------*/
 /* Custom Font */
 @font-face {
@@ -262,8 +221,10 @@ button{
     border: none;
     color: #fff;
     font-size: 1.1rem;
-    border: 1px solid rgba(0, 0, 0, 0.7);
+}
 
+button:hover{
+    background-color: #e65a33;
 }
 
 .user__card{
@@ -302,9 +263,9 @@ button{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     margin: 10% auto;
-    padding: 20px;
+    padding: 24px;
     background: white;
     position: relative;
     border-radius: 5px;
@@ -320,8 +281,12 @@ button{
     position: absolute;
     top: 5px;
     right: 8px;
+    font-size: 1.2rem;
 }
 
+.cerrar-popup:hover{
+    cursor: pointer;
+}
 /*  */
 .formulario-control{
     position: relative;
@@ -372,4 +337,54 @@ button{
 #formLogin{
     padding: 4rem;
     padding-top: 1rem;
+}
+
+/*----------------- USERDATA-------------------- */
+.btnEditUser{
+    font-size: 1rem;
+    max-width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*  */
+@media (min-width: 576px) {
+
+    .card-img{
+        max-width: 100%;
+    }
+    .content{
+        max-width: 50%;
+    }
+}
+/*  Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .card{
+        flex-direction: row;
+    }
+    .card-img{
+        max-width: 35%;
+    }
+    .content{
+        max-width: 100%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .nav-link:hover{
+        color: #fff;
+        background-color: transparent;
+    }
+
+}   
+
+ /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
 }
