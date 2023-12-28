@@ -297,7 +297,7 @@ function guardarCambiosUsuarioEnUsuarios(usuario){
                     if (emailRepetido) {
                         console.log("El email no puede ser modificado.");
                     } else if (emailsIguales) {
-                        // FALLA
+                        // FALLA NOSE
                         console.log("El email puede ser modificado y es igual al original.");
                         coleccionDeObjetos.put({
                             "email":datosUsuario.userEmailEdit,
