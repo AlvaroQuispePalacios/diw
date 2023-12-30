@@ -137,6 +137,7 @@ let envoltorioPopup = document.querySelector(".envoltorio-popup");
 let cerrarPopup = document.querySelector(".cerrar-popup");
 btnEditUser.addEventListener("click", () => {
     envoltorioPopup.style = "display:block";
+    leerDatosDelUsuarioDeUsuarioConectado();
 });
 
 cerrarPopup.addEventListener("click", () => {
@@ -255,7 +256,6 @@ function buscarUsuarioEnUsuarios(email) {
         console.log(`objecto de la base de datos usuarios `);
         console.log(conexion.result);
         let usuarioEmail = conexion.result.email;
-        // console.log(usuarioEmail);
         guardarCambiosUsuarioEnUsuarios(usuarioEmail);
     };
     console.log(email);

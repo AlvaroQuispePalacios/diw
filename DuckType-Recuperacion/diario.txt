@@ -44,3 +44,13 @@ INTENTAR PARA 28-12-2023
 28-12-2023
 HECHO
 - Se inicio las acciones en el rol usuario 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+30-12-2023
+HECHO
+- El usuario puede editar sus datos y se guardan en la base de datos y se actualizan
+POR HACER
+- Implementar aviso para cuando se actualize los datos popup.
+- Falta implementar la eliminacion de la cuenta por parte del usuario(agregar aviso de eliminacion).
+- Faltan acciones para el administrador.
+- Mañana sera un nuevo dia
