@@ -45,36 +45,112 @@
         </div>
 
         <div class="contenedorUsuarios">
-            <table class="usuario w-100 text-center">
+            <table class="usuario w-100 text-center" id="usuariosDeDbUsuarios">
                 <tr>
                     <th>Avatar</th>
                     <th>Email</td>
                     <th>Username</th>
+                    <th>Password</th>
                     <th>Rol</th>
                     <th>Actions</th>
                 </tr>
             </table>
-            <div class="fomularioPreRellenado">
-                <label>Email:</label>
-                <input type="email" class="userEmail" value="">
-                <label>Username:</label>
-                <input type="text" class="userUserName" value="">
-                
-                <label>Image:</label>
-                <input type="text" class="userImage" value="">
-                <label>Rol:</label>
-                <input type="text" class="userRol" value="">
-                
-                <input type="text" class="userPassword" value="" hidden>
-            </div>
 
-            <button type="submit" class="guardarCambios">Guardar Cambios</button>
-            <button type="submit" class="eliminarUsuario">Elimnar Usuario</button>
         </div>
+        <div class="envoltorio-popup datosUsuarioDeUsuarios">
+            <div class="popup">
+              <div class="cerrar-popup">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20"
+                  width="16"
+                  viewBox="0 0 384 512"
+                >
+                  <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  />
+                </svg>
+              </div>
+
+              <div class="contenido-popup">
+                <h3>Actualizar información</h3>
+                <label for="">Email</label>
+                <input type="email" id="userDataEmailEdit">
+                <label>Username:</label>
+                <input type="text" id="userDataUsernameEdit"/>
+                <input type="text" id="userDataPasswordEdit"/ hidden>
+
+                <label for="">Rol</label><br>
+                <input type="radio" name="rol" value="user" class="userDataRolEdit"/>user
+                <input type="radio" name="rol" value="admin" class="userDataRolEdit"/>admin
+                <br>
+                
+                
+                <input type="text" id="userDataAvatarEdit" hidden />
+                <label>Avatar</label><br />
+                <small
+                  >Si no se elige un avatar se usara el que ya tienes</small
+                >
+                <div
+                  class="mt-2 d-flex flex-row justify-content-center"
+                  id="imagesUserDataEdit"
+                >
+                  <input
+                    class="position-absolute"
+                    type="radio"
+                    name="image"
+                    id="avatar1UserDataEdit"
+                  />
+                  <label class="p-2" for="avatar1UserDataEdit">
+                    <img
+                      class="avatar img-fluid rounded-circle"
+                      src="../img/pato1.jpg"
+                      ruta="/DuckType-Recuperacion/img/pato1.jpg"
+                    />
+                  </label>
+
+                  <input
+                    class="position-absolute"
+                    type="radio"
+                    name="image"
+                    id="avatar2UserDataEdit"
+                  />
+
+                  <label class="p-2" for="avatar2UserDataEdit">
+                    <img
+                      class="avatar img-fluid rounded-circle"
+                      src="../img/pato2.png"
+                      ruta="/DuckType-Recuperacion/img/pato2.png"
+                    />
+                  </label>
+
+                  <input
+                    class="position-absolute"
+                    type="radio"
+                    name="image"
+                    id="avatar3UserDataEdit"
+                  />
+                  <label class="p-2" for="avatar3UserDataEdit">
+                    <img
+                      class="avatar img-fluid rounded-circle"
+                      src="../img/pato3.jpg"
+                      ruta="/DuckType-Recuperacion/img/pato3.jpg"
+                    />
+                  </label>
+                </div>
+
+                <button class="" id="btnSaveChangeUserData">
+                  Guardar cambios
+                </button>
+              </div>
+            </div>
+          </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- <script src="../js/admin.js"></script> -->
     <script src="../js/adminIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
 </body>
 </html>

@@ -54,3 +54,9 @@ POR HACER
 - Falta implementar la eliminacion de la cuenta por parte del usuario(agregar aviso de eliminacion).
 - Faltan acciones para el administrador.
 - Mañana sera un nuevo dia
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+31-12-2023
+HECHO
+- El puede realizar todas las acciones pedidas
+- Mensajes al realizar una accion implementadas en el usuario

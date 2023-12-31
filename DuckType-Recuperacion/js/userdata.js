@@ -48,6 +48,7 @@ function crearBaseDeDatosUsuarioConectado() {
         usuarioConectado = conexion.result;
         console.log("Base de datos abierta", usuarioConectado);
         leerDatosDelUsuarioDeUsuarioConectado();
+        
 
     }
 
@@ -111,7 +112,7 @@ function datosActualizarInformacion() {
     console.log(datosUsuario.userNameEdit);
     console.log(datosUsuario.userPasswordEdit);
     console.log(datosUsuario.userRolEdit);
-    
+
     if (avatar == null || avatar == undefined || avatar == "") {
         datosUsuario.userAvatarEdit = userDataAvatarEdit.value;
     } else {
@@ -241,11 +242,13 @@ function buscarUsuarioEnUsuarioConectado() {
     };
 }
 
-function guardarCambiosUsuarioEnUsuarioConectado(objetoActualizado){
+function guardarCambiosUsuarioEnUsuarioConectado(objetoActualizado) {
     let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readwrite");
     let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
     coleccionDeObjetos.put(objetoActualizado);
 }
+
+
 
 // -----------------------FUNCIONES DE BASE DE DATOS USUARIOS--------------------------------
 function buscarUsuarioEnUsuarios(email) {
@@ -280,6 +283,7 @@ function guardarCambiosUsuarioEnUsuarios(usuarioEmail) {
         peticionDeActualizacion.onsuccess = () => {
             guardarCambiosUsuarioEnUsuarioConectado(objetoActualizado);
             leerDatosDelUsuarioDeUsuarioConectado();
+            msgCambiosValidos();
             console.log("Objeto actualizado con éxito");
         };
 
@@ -287,10 +291,67 @@ function guardarCambiosUsuarioEnUsuarios(usuarioEmail) {
         peticionDeActualizacion.onerror = (error) => {
             console.error("Error al actualizar el objeto:", error.target.error);
         };
-       
     }
-
 }
+
+// BOTON DE ELIMINAR CUENTA
+let btnDeleteAccount = document.getElementById("btnDeleteAccount");
+let msgCuentaEliminadaPopup = document.querySelector(".msgCuentaEliminada");
+let contenidoMsgCuentaEliminadaPopup = document.querySelectorAll(".msgCuentaEliminada button")
+let cerrarMsgCuentaEliminadaPopup = document.querySelector(".msgCuentaEliminada .cerrar-popup");
+
+btnDeleteAccount.addEventListener("click", () => {
+    msgCuentaEliminadaPopup.style = "display:block";
+});
+contenidoMsgCuentaEliminadaPopup[0].addEventListener("click", buscarUsuarioEnUsuarioConectadoParaEliminar);
+
+contenidoMsgCuentaEliminadaPopup[1].addEventListener("click", () => {
+    msgCuentaEliminadaPopup.style = "display:none";
+});
+cerrarMsgCuentaEliminadaPopup.addEventListener("click", () => {
+    msgCuentaEliminadaPopup.style = "display:none";
+});
+
+function buscarUsuarioEnUsuarioConectadoParaEliminar() {
+    let transaccion = usuarioConectado.transaction(["usuarioConectado"], "readonly");
+    let coleccionDeObjetos = transaccion.objectStore("usuarioConectado");
+    let conexion = coleccionDeObjetos.openCursor();
+    conexion.onsuccess = (e) => {
+        let cursor = e.target.result;
+        if (cursor) {
+            console.log(cursor.value);
+            if (cursor.value.rol == "admin") {
+                window.location.href = "../pages/admin.html"
+            } else if (cursor.value.rol == "user") {
+                eliminarCuenta(cursor.value.email);
+                closeSession();
+            }
+        } else {
+            console.log("No hay usuario conectado en este momento");
+            window.location.href = "../index.html";
+        }
+    };
+}
+function eliminarCuenta(email){
+    let transaccion = usuarios.transaction(["usuarios"], "readwrite");
+    let coleccionDeObjetos = transaccion.objectStore("usuarios");
+    let conexion = coleccionDeObjetos.delete(email);
+    conexion.onsuccess = () => {
+        console.log(`Usuario Eliminado`);
+    };
+}
+
+// MENSAJES
+function msgCambiosValidos(){
+    let msgCambiosValidosPopup = document.querySelector(".msgCambiosValidosPopup");
+    let cerrarMsgCambiosValidosPopup = document.querySelector(".msgCambiosValidosPopup .cerrar-popup");
+    msgCambiosValidosPopup.style = "display:block";
+    envoltorioPopup.style = "display:none";
+    cerrarMsgCambiosValidosPopup.addEventListener("click", () => {
+        msgCambiosValidosPopup.style = "display:none";
+    });
+}
+f
 
 // --------------------------------------------------------------------------------------------
 let btnSaveChangeUserData = document.getElementById("btnSaveChangeUserData");
