@@ -60,3 +60,8 @@ POR HACER
 HECHO
 - El puede realizar todas las acciones pedidas
 - Mensajes al realizar una accion implementadas en el usuario
+- Iniciamos con las acciones del administrador
+- Se puede ver los usuario al entrar como administrador
+- Se leen los datos en el formulario para actualizar
+POR HACER MAÑANA
+- Hacer que el boton guardarCambios actualize los datos del usuario y se actualize la web para mostrar los cambios

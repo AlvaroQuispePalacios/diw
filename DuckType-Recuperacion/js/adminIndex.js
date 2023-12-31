@@ -115,14 +115,95 @@ function mostrarInformacionDeLosUsuariosEnLaWeb(usuario){
 }
 
 function popupInformacionUsuario(email, username, password, rol, avatar){
+    // Mostrar y cerrar POPUP
     let popupUsuarioDeUsuarios = document.querySelector(".datosUsuarioDeUsuarios");
     let cerrarPopupUsuarioDeUsuarios = document.querySelector(".datosUsuarioDeUsuarios .cerrar-popup")
     popupUsuarioDeUsuarios.style = "display:block";
     cerrarPopupUsuarioDeUsuarios.addEventListener("click", () => {
         popupUsuarioDeUsuarios.style = "display:none";
     });
-    console.log(email, username, password, rol, avatar);
+    // Mostrar datos en el popup
+    let userDataEmailEdit = document.getElementById("userDataEmailEdit");
+    let userDataUsernameEdit = document.getElementById("userDataUsernameEdit");
+    let userDataPasswordEdit = document.getElementById("userDataPasswordEdit");
+    let userDataAvatarEdit = document.getElementById("userDataAvatarEdit");
+    let inputRol = document.getElementById("inputRol");
+    let inputsRol = document.querySelectorAll(".userDataRolEdit");
+    userDataEmailEdit.value = email;
+    userDataUsernameEdit.value = username;
+    userDataPasswordEdit.value = password;
+    userDataAvatarEdit.value = avatar
+    inputsRol.forEach((input) => {
+        if(input.value == rol){
+            input.checked = true;
+            inputRol.value = input.value;
+        }
+    });
+
+    // console.log(email, username, password, rol, avatar);
 }
+
+// ----------------------------TOMAR INFORMACION DEL FORMULARIO PARA ACTUALIZAR LOS DATOS-----------------------
+// Recoge la informacion del usuario en el register
+
+// Toma la informacion del formulario donde se actualizara los datos del usuario
+const inputsRol = document.querySelectorAll(".userDataRolEdit");
+const inputRol = document.getElementById("inputRol");
+let rol;
+inputsRol.forEach((input) => {
+    input.addEventListener("click", () => {
+        rol = input.value;
+        inputRol.value = rol;
+        console.log(rol);
+    })
+});
+
+const imagesUserDataEdit = document.getElementById("imagesUserDataEdit");
+let avatar;
+
+imagesUserDataEdit.addEventListener("click", (e) => {
+    if (e.target.classList.contains("avatar")) {
+        avatar = e.target.getAttribute("ruta");
+    }
+});
+
+function datosActualizarInformacion() {
+    let userDataEmailEdit = document.getElementById("userDataEmailEdit");
+    let userDataUsernameEdit = document.getElementById("userDataUsernameEdit");
+    let userDataPasswordEdit = document.getElementById("userDataPasswordEdit");
+    let inputRol = document.getElementById("inputRol");
+    let userDataAvatarEdit = document.getElementById("userDataAvatarEdit");
+    let datosUsuario = new Array();
+    datosUsuario.userEmailEdit = userDataEmailEdit.value
+    datosUsuario.userNameEdit = userDataUsernameEdit.value;
+    datosUsuario.userPasswordEdit = userDataPasswordEdit.value;
+    datosUsuario.userRolEdit = inputRol.value;
+
+    console.log(datosUsuario.userEmailEdit);
+    console.log(datosUsuario.userNameEdit);
+    console.log(datosUsuario.userPasswordEdit);
+
+    if (rol == null || rol == undefined || rol == "") {
+        datosUsuario.userRolEdit = inputRol.value;
+    } else {
+        datosUsuario.userAvatarEdit = rol;
+    }
+    console.log(datosUsuario.userRolEdit);
+
+    if (avatar == null || avatar == undefined || avatar == "") {
+        datosUsuario.userAvatarEdit = userDataAvatarEdit.value;
+    } else {
+        datosUsuario.userAvatarEdit = avatar;
+    }
+    console.log(datosUsuario.userAvatarEdit);
+    // return datosUsuario;
+}
+
+
+
+let btnSaveChangeUserData = document.getElementById("btnSaveChangeUserData");
+btnSaveChangeUserData.addEventListener("click", datosActualizarInformacion);
+
 // ------------------------FUNCIONES DE BASE DE DATOS USUARIO CONECTADO--------------------------
 /* 
     Mira si hay un usuario conectado: 

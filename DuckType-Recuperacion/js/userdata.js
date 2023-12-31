@@ -92,8 +92,6 @@ function mostrarInformacionDelUsuarioEnLaWeb(objectUser) {
     userDataPasswordEdit.value = desencriptar(objectUser.password, SECRET_KEY);
     userDataRolEdit.value = objectUser.rol;
     userDataAvatarEdit.value = objectUser.avatar;
-
-    // Falta agregar los settings que el usuario pueda modificar sus datos
 }
 
 // ----------------------------TOMAR INFORMACION DEL FORMULARIO PARA ACTUALIZAR LOS DATOS-----------------------
