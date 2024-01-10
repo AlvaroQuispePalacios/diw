@@ -1,9 +1,30 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: rgb(49, 49, 49);
 }
 
 #main {
     display: flex;
     justify-content: center;
 }
+
+#game{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 5rem;
+    border: 1px solid black;
+}
+
+.card{
+    width: 200px;
+    height: 250px;
+    border: 1px solid rgb(134, 84, 185);
+}
+
+/* .card:hover{
+    background-color: rgb(237, 84, 84);
+} */
