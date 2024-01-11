@@ -20,10 +20,28 @@ body{
 }
 
 .card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: white;
     width: 200px;
     height: 250px;
     border: 1px solid rgb(134, 84, 185);
+    border-radius: 5px;
+    background-color: rgb(130, 102, 158);
 }
+
+.card > span{
+    opacity: .5;
+}
+
+.card-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* .card:hover{
     background-color: rgb(237, 84, 84);
