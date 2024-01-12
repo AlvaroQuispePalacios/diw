@@ -30,17 +30,13 @@ body{
     border: 1px solid rgb(134, 84, 185);
     border-radius: 5px;
     background-color: rgb(130, 102, 158);
+    cursor: pointer;
 }
 
 .card > span{
-    opacity: .5;
+    opacity: .0;
 }
 
-.card-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 /* .card:hover{
