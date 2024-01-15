@@ -52,31 +52,53 @@ let contador = 0;
 let arrayCompararCartasContenido = Array(2);
 let arrayCompararCartasObjeto = Array(2);
 
+
+
 $(".card").each((index, e) => {
     $(e).on("click", () => {
         // Mostrar contenido de la carta
         $(e).find(".card-content").css("opacity", 1);
-
         arrayCompararCartasContenido[contador] = $(e).find(".card-content").text();
         arrayCompararCartasObjeto[contador] = $(e);
-
-        if(arrayCompararCartasContenido[0] == arrayCompararCartasContenido[1]){
-            arrayCompararCartasObjeto[0].css("opacity", 0);
-            arrayCompararCartasObjeto[1].css("opacity", 0);
-            arrayCompararCartasContenido = Array(2);
-            arrayCompararCartasObjeto = Array(2);
-        };
         
+        // console.log(arrayCompararCartasObjeto);
         contador++;
-
-        if(contador == MAX_CARTAS_ELEGIDAS){
-            $(".card-content").css("opacity", 0);
+        
+        // compararCartas(arrayCompararCartasContenido, arrayCompararCartasObjeto);
+        
+        if(contador > MAX_CARTAS_ELEGIDAS){
             arrayCompararCartasContenido = Array(2);
             arrayCompararCartasObjeto = Array(2);
             contador = 0;
+            clearTimeout(esconderCartasContenido);
         }
-
-
+        
+        let esconderCartasContenido = setTimeout(() => {
+            arrayCompararCartasObjeto.forEach((e) => {
+                $(e).find(".card-content").css("opacity", 0);
+            });
+        }, 1000);
+        // // Correcta
+        // if((arrayCompararCartasContenido[0] == arrayCompararCartasContenido[1]) && (arrayCompararCartasObjeto[0] !== arrayCompararCartasObjeto[1])){
+        //     setTimeout(() => {
+        //         arrayCompararCartasObjeto[0].css("display", "none");
+        //         arrayCompararCartasObjeto[1].css("display", "none");
+        //     }, 1000)
+        //     console.log("Es correcto");
+        // };
+        
+        // if(contador > MAX_CARTAS_ELEGIDAS){
+        //     $(".card-content").css("opacity", 0);
+        //     arrayCompararCartasContenido = Array(2);
+        //     arrayCompararCartasObjeto = Array(2);
+        //     contador = 0;
+        // }
+        // contador++;
+        
+;
+        console.log(arrayCompararCartasContenido);
+        
+        
     });
 });
 
