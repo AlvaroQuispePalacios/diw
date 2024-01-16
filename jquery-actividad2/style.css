@@ -34,9 +34,12 @@ body{
 }
 
 .card > span{
-    opacity: .0;
+    opacity: 0;
 }
 
+.activate{
+    opacity: 1;
+}
 
 
 /* .card:hover{
