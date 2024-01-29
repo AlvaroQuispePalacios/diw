@@ -2,11 +2,12 @@ let contadorId = 0;
 let contadorPostItRed = 0;
 let contadorPostItBlue = 0;
 
+
 function getRandom() {
     return Math.floor(Math.random() * (2 - 1 + 1) + 1);
 }
 
-// Funcion que crea postIts de forma aleatoria
+// Funcion que crea los postIts de forma aleatoria
 function createPostIt() {
     let numberRandom = getRandom();
     let postItColor;
@@ -46,6 +47,8 @@ function maximizePostIt(idPostIt){
     $("#postIt" + idPostIt + "> .post-it-content").show();
 }
 
+
+// Funcion que muestra el mensaje de confirmacion para eliminar el postIt y actualiza el contador
 function callPopUpClosePostIt(idPostIt) {
     $(".envoltorio-popup").show();
 
