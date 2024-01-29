@@ -1,10 +1,11 @@
 let contadorId = 0;
 let contadorPostItRed = 0;
 let contadorPostItBlue = 0;
-
+let contadorPostItGreen = 0;
+let contadorPostItYellow = 0;
 
 function getRandom() {
-    return Math.floor(Math.random() * (2 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (4 - 1 + 1) + 1);
 }
 
 // Funcion que crea los postIts de forma aleatoria
@@ -15,6 +16,10 @@ function createPostIt() {
         postItColor = "red";
     }else if(numberRandom == 2){
         postItColor = "blue";
+    }else if (numberRandom == 3){
+        postItColor = "green"
+    }else if (numberRandom == 4){
+        postItColor = "yellow";
     }
     return `
         <div class="square post-it-${postItColor}" id="postIt${contadorId}">
@@ -61,12 +66,23 @@ function callPopUpClosePostIt(idPostIt) {
             if ((contadorPostItBlue > 0) && (($("#postIt"+idPostIt).data("contado") == true))) {
                 contadorPostItBlue--;
             }
+        }else if($("#postIt" + idPostIt).hasClass("post-it-green")){
+            if ((contadorPostItGreen > 0) && (($("#postIt"+idPostIt).data("contado") == true))) {
+                contadorPostItGreen--;
+            }
+        }else if($("#postIt" + idPostIt).hasClass("post-it-yellow")){
+            if ((contadorPostItYellow > 0) && (($("#postIt"+idPostIt).data("contado") == true))) {
+                contadorPostItYellow--;
+            }
         }
         $("#tableRed").text("Post-Its: " + contadorPostItRed);
         $("#tableBlue").text("Post-Its: " + contadorPostItBlue);
+        $("#tableGreen").text("Post-Its: " + contadorPostItGreen);
+        $("#tableYellow").text("Post-Its: " + contadorPostItYellow);
 
         $("#postIt" + idPostIt).remove();
         $(".envoltorio-popup").hide();
+
     });
 }
 
@@ -131,5 +147,51 @@ $("#tableBlue").droppable({
             }
         }
         $(this).text("Post-Its: " + contadorPostItBlue);
+    },
+});
+
+$("#tableGreen").droppable({
+    accept: ".post-it-green",
+    drop: function (event, e) {
+        // Verificar si el elemento esta contado
+        if (e.draggable.data("contado") == false) {
+            e.draggable.removeData("contado");
+            e.draggable.data("contado", true);
+            contadorPostItGreen++;
+        }
+        $(this).text("Post-Its: " + contadorPostItGreen);
+    },
+    out: function (event, e) {
+        if (e.draggable.data("contado") == true) {
+            e.draggable.removeData("contado");
+            e.draggable.data("contado", false);
+            if(contadorPostItGreen > 0){
+                contadorPostItGreen--;
+            }
+        }
+        $(this).text("Post-Its: " + contadorPostItGreen);
+    },
+});
+
+$("#tableYellow").droppable({
+    accept: ".post-it-yellow",
+    drop: function (event, e) {
+        // Verificar si el elemento esta contado
+        if (e.draggable.data("contado") == false) {
+            e.draggable.removeData("contado");
+            e.draggable.data("contado", true);
+            contadorPostItYellow++;
+        }
+        $(this).text("Post-Its: " + contadorPostItYellow);
+    },
+    out: function (event, e) {
+        if (e.draggable.data("contado") == true) {
+            e.draggable.removeData("contado");
+            e.draggable.data("contado", false);
+            if(contadorPostItYellow > 0){
+                contadorPostItYellow--;
+            }
+        }
+        $(this).text("Post-Its: " + contadorPostItYellow);
     },
 });

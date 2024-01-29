@@ -8,8 +8,8 @@
 }
 
 .square {
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    min-width: 15rem;
     max-width: 20rem;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.527);
@@ -60,6 +60,10 @@
     background-color: rgb(166, 247, 166);
 }
 
+.yellow{
+    background-color: rgb(247, 247, 161);
+}
+
 .post-it-validate {
     background-color: rgb(174, 174, 174);
 }
@@ -70,6 +74,14 @@
 
 .post-it-blue {
     background-color: rgb(153, 153, 242);
+}
+
+.post-it-green{
+    background-color: rgb(166, 247, 166);
+}
+
+.post-it-yellow{
+    background-color: rgb(247, 247, 161);
 }
 /* ------------------------------------------------- */
 
