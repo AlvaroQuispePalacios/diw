@@ -5,7 +5,7 @@ let contadorPostItGreen = 0;
 let contadorPostItYellow = 0;
 
 function getRandom() {
-    return Math.floor(Math.random() * (4 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (3 - 1 + 1) + 1);
 }
 
 // Funcion que crea los postIts de forma aleatoria
@@ -18,8 +18,6 @@ function createPostIt() {
         postItColor = "blue";
     }else if (numberRandom == 3){
         postItColor = "green"
-    }else if (numberRandom == 4){
-        postItColor = "yellow";
     }
     return `
         <div class="square post-it-${postItColor}" id="postIt${contadorId}">
@@ -52,7 +50,6 @@ function maximizePostIt(idPostIt){
     $("#postIt" + idPostIt + "> .post-it-content").show();
 }
 
-
 // Funcion que muestra el mensaje de confirmacion para eliminar el postIt y actualiza el contador
 function callPopUpClosePostIt(idPostIt) {
     $(".envoltorio-popup").show();
@@ -70,15 +67,11 @@ function callPopUpClosePostIt(idPostIt) {
             if ((contadorPostItGreen > 0) && (($("#postIt"+idPostIt).data("contado") == true))) {
                 contadorPostItGreen--;
             }
-        }else if($("#postIt" + idPostIt).hasClass("post-it-yellow")){
-            if ((contadorPostItYellow > 0) && (($("#postIt"+idPostIt).data("contado") == true))) {
-                contadorPostItYellow--;
-            }
         }
-        $("#tableRed").text("Post-Its: " + contadorPostItRed);
-        $("#tableBlue").text("Post-Its: " + contadorPostItBlue);
-        $("#tableGreen").text("Post-Its: " + contadorPostItGreen);
-        $("#tableYellow").text("Post-Its: " + contadorPostItYellow);
+
+        $("#tableRed h2").text("TO DO: " + contadorPostItRed);
+        $("#tableBlue h2").text("IN PROGRESS: " + contadorPostItBlue);
+        $("#tableGreen h2").text("DONE: " + contadorPostItGreen);
 
         $("#postIt" + idPostIt).remove();
         $(".envoltorio-popup").hide();
@@ -113,7 +106,7 @@ $("#tableRed").droppable({
             e.draggable.data("contado", true);
             contadorPostItRed++;
         }
-        $(this).text("Post-Its: " + contadorPostItRed);
+        $("#tableRed h2").text("TO DO: " + contadorPostItRed);
     },
     out: function (event, e) {
         if (e.draggable.data("contado") == true) {
@@ -123,7 +116,7 @@ $("#tableRed").droppable({
                 contadorPostItRed--;
             }
         }
-        $(this).text("Post-Its: " + contadorPostItRed);
+        $("#tableRed h2").text("TO DO: " + contadorPostItRed);
     },
 });
 
@@ -136,7 +129,8 @@ $("#tableBlue").droppable({
             e.draggable.data("contado", true);
             contadorPostItBlue++;
         }
-        $(this).text("Post-Its: " + contadorPostItBlue);
+        $("#tableBlue h2").text("IN PROGRESS: " + contadorPostItBlue);
+
     },
     out: function (event, e) {
         if (e.draggable.data("contado") == true) {
@@ -146,7 +140,8 @@ $("#tableBlue").droppable({
                 contadorPostItBlue--;
             }
         }
-        $(this).text("Post-Its: " + contadorPostItBlue);
+        $("#tableBlue h2").text("IN PROGRESS: " + contadorPostItBlue);
+
     },
 });
 
@@ -159,7 +154,8 @@ $("#tableGreen").droppable({
             e.draggable.data("contado", true);
             contadorPostItGreen++;
         }
-        $(this).text("Post-Its: " + contadorPostItGreen);
+        $("#tableGreen h2").text("DONE: " + contadorPostItGreen);
+
     },
     out: function (event, e) {
         if (e.draggable.data("contado") == true) {
@@ -169,29 +165,8 @@ $("#tableGreen").droppable({
                 contadorPostItGreen--;
             }
         }
-        $(this).text("Post-Its: " + contadorPostItGreen);
+        $("#tableGreen h2").text("DONE: " + contadorPostItGreen);
+
     },
 });
 
-$("#tableYellow").droppable({
-    accept: ".post-it-yellow",
-    drop: function (event, e) {
-        // Verificar si el elemento esta contado
-        if (e.draggable.data("contado") == false) {
-            e.draggable.removeData("contado");
-            e.draggable.data("contado", true);
-            contadorPostItYellow++;
-        }
-        $(this).text("Post-Its: " + contadorPostItYellow);
-    },
-    out: function (event, e) {
-        if (e.draggable.data("contado") == true) {
-            e.draggable.removeData("contado");
-            e.draggable.data("contado", false);
-            if(contadorPostItYellow > 0){
-                contadorPostItYellow--;
-            }
-        }
-        $(this).text("Post-Its: " + contadorPostItYellow);
-    },
-});

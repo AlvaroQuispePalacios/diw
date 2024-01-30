@@ -10,6 +10,7 @@
 .square {
     position: absolute;
     min-width: 15rem;
+    width: 100%;
     max-width: 20rem;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.527);
@@ -123,4 +124,8 @@
 .contenido-popup button{
     margin: 0 1rem;
     padding: .5rem;
+}
+
+h2{
+    text-align: center;
 }
