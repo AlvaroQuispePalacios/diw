@@ -1,5 +1,5 @@
-var client_id = "8be8bb5e49d24d39a5fcf7a52ff9d029";
-var client_secret = "18555ef95e1d477da694d44f8af1d8f6";
+var client_id = "";
+var client_secret = "";
 var access_token = "";
 
 function createCardArtist(){
