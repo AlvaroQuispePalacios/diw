@@ -1,0 +1,71 @@
+var client_id = "8be8bb5e49d24d39a5fcf7a52ff9d029";
+var client_secret = "18555ef95e1d477da694d44f8af1d8f6";
+var access_token = "";
+
+function createCardArtist(){
+    
+}
+
+
+//We create the Spotify class with the API to make the call to
+function Spotify() {
+    this.apiUrl = "https://api.spotify.com/";
+}
+
+//Search for information on an artist, adding the possibility of obtaining their albums.
+Spotify.prototype.getArtist = function (artist) {
+    $.ajax({
+        type: "GET",
+        url: this.apiUrl + "v1/search?type=artist&q=" + artist,
+        headers: {
+            Authorization: "Bearer " + access_token,
+        },
+    }).done(function (response) {
+        response.artists.items.forEach((item) => {
+            $("#results").append(item.name);
+        });
+
+        console.log(response);
+    });
+};
+
+//Search the albums of an artist, given the id of the artist
+Spotify.prototype.getArtistById = function (artistId) {
+    $.ajax({
+        type: "GET",
+        url: this.apiUrl + "v1/artists/" + artistId + "/albums",
+        headers: {
+            Authorization: "Bearer " + access_token,
+        },
+    }).done(function (response) {
+        console.log(response);
+    });
+};
+
+//This fragment is the first thing that is loaded, when the $(document).ready
+$(function () {
+    $.ajax({
+        type: "POST",
+        url: "https://accounts.spotify.com/api/token",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(
+                "Authorization",
+                "Basic " + btoa(client_id + ":" + client_secret)
+            );
+        },
+        dataType: "json",
+        data: { grant_type: "client_credentials" },
+    }).done(function (response) {
+        access_token = response.access_token;
+    });
+
+    var spotify = new Spotify();
+
+    $("#bgetArtist").on("click", function () {
+        spotify.getArtist($("#artistName").val());
+    });
+
+    $("#results").on("click", ".artistId", function () {
+        spotify.getArtistById($(this).attr("data-id"));
+    });
+});

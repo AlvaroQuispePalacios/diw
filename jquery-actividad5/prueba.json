@@ -1,0 +1,692 @@
+{
+    "artists": {
+        "href": "https://api.spotify.com/v1/search?query=Bizarrap&type=artist&locale=es-ES%2Ces%3Bq%3D0.8%2Cen-US%3Bq%3D0.5%2Cen%3Bq%3D0.3&offset=0&limit=20",
+        "items": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/716NhGYqD1jl2wI1Qkgq36"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 14151990
+                },
+                "genres": [
+                    "argentine hip hop",
+                    "pop venezolano",
+                    "trap argentino",
+                    "trap latino",
+                    "urbano latino"
+                ],
+                "href": "https://api.spotify.com/v1/artists/716NhGYqD1jl2wI1Qkgq36",
+                "id": "716NhGYqD1jl2wI1Qkgq36",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb14add0d3419426b84158b913",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab6761610000517414add0d3419426b84158b913",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f17814add0d3419426b84158b913",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizarrap",
+                "popularity": 84,
+                "type": "artist",
+                "uri": "spotify:artist:716NhGYqD1jl2wI1Qkgq36"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/2TSvMFHlguDI495vujOAys"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 255482
+                },
+                "genres": ["detroit hip hop"],
+                "href": "https://api.spotify.com/v1/artists/2TSvMFHlguDI495vujOAys",
+                "id": "2TSvMFHlguDI495vujOAys",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb4ce52c08f53406cae543e6ce",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab676161000051744ce52c08f53406cae543e6ce",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f1784ce52c08f53406cae543e6ce",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizarre",
+                "popularity": 41,
+                "type": "artist",
+                "uri": "spotify:artist:2TSvMFHlguDI495vujOAys"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/3qsKSpcV3ncke3hw52JSMB"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 2225610
+                },
+                "genres": ["trap latino", "urbano latino"],
+                "href": "https://api.spotify.com/v1/artists/3qsKSpcV3ncke3hw52JSMB",
+                "id": "3qsKSpcV3ncke3hw52JSMB",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb0a248d29f8faa91f971e5cae",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab676161000051740a248d29f8faa91f971e5cae",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f1780a248d29f8faa91f971e5cae",
+                        "width": 160
+                    }
+                ],
+                "name": "Young Miko",
+                "popularity": 83,
+                "type": "artist",
+                "uri": "spotify:artist:3qsKSpcV3ncke3hw52JSMB"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/74G7fANfW56Zz8lFjD9m16"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 6
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/74G7fANfW56Zz8lFjD9m16",
+                "id": "74G7fANfW56Zz8lFjD9m16",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27356d682dc5412ec7541259777",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e020ee3836b42c04bfb7b07d003",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048510ee3836b42c04bfb7b07d003",
+                        "width": 64
+                    }
+                ],
+                "name": "Bizarrap",
+                "popularity": 0,
+                "type": "artist",
+                "uri": "spotify:artist:74G7fANfW56Zz8lFjD9m16"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/7s3eCGNZMrwUQraXlocCBv"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 175839
+                },
+                "genres": ["brooklyn drill", "new york drill"],
+                "href": "https://api.spotify.com/v1/artists/7s3eCGNZMrwUQraXlocCBv",
+                "id": "7s3eCGNZMrwUQraXlocCBv",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebc75e0b3ec4c3a1ea49a3f275",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174c75e0b3ec4c3a1ea49a3f275",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178c75e0b3ec4c3a1ea49a3f275",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizzy Banks",
+                "popularity": 50,
+                "type": "artist",
+                "uri": "spotify:artist:7s3eCGNZMrwUQraXlocCBv"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/68KmkJeZGfwe1OUaivBa2L"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 3612399
+                },
+                "genres": ["k-pop", "k-pop boy group"],
+                "href": "https://api.spotify.com/v1/artists/68KmkJeZGfwe1OUaivBa2L",
+                "id": "68KmkJeZGfwe1OUaivBa2L",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebe9dd6110fc47f859a9bbd2d2",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174e9dd6110fc47f859a9bbd2d2",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178e9dd6110fc47f859a9bbd2d2",
+                        "width": 160
+                    }
+                ],
+                "name": "ATEEZ",
+                "popularity": 73,
+                "type": "artist",
+                "uri": "spotify:artist:68KmkJeZGfwe1OUaivBa2L"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/2NfSBtmWe7oPw1EmetJVso"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 508336
+                },
+                "genres": ["panamanian pop", "reggaeton", "urbano latino"],
+                "href": "https://api.spotify.com/v1/artists/2NfSBtmWe7oPw1EmetJVso",
+                "id": "2NfSBtmWe7oPw1EmetJVso",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebee365a44f0c53b8fe01e6651",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174ee365a44f0c53b8fe01e6651",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178ee365a44f0c53b8fe01e6651",
+                        "width": 160
+                    }
+                ],
+                "name": "Boza",
+                "popularity": 62,
+                "type": "artist",
+                "uri": "spotify:artist:2NfSBtmWe7oPw1EmetJVso"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6u2JGZYGitPzTfCRjnAAie"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 807
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/6u2JGZYGitPzTfCRjnAAie",
+                "id": "6u2JGZYGitPzTfCRjnAAie",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb953fb6ca7c371aabce6e3e4d",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174953fb6ca7c371aabce6e3e4d",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178953fb6ca7c371aabce6e3e4d",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizzarri",
+                "popularity": 29,
+                "type": "artist",
+                "uri": "spotify:artist:6u2JGZYGitPzTfCRjnAAie"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0P8V2XSw1mIo8739T1qjzr"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 114960
+                },
+                "genres": ["christian hip hop"],
+                "href": "https://api.spotify.com/v1/artists/0P8V2XSw1mIo8739T1qjzr",
+                "id": "0P8V2XSw1mIo8739T1qjzr",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb34199c6e5282c9beda788c38",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab6761610000517434199c6e5282c9beda788c38",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f17834199c6e5282c9beda788c38",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizzle",
+                "popularity": 44,
+                "type": "artist",
+                "uri": "spotify:artist:0P8V2XSw1mIo8739T1qjzr"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/07lbidCU8ZwtNCUrmaO0QU"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 12700
+                },
+                "genres": [
+                    "classic house",
+                    "diva house",
+                    "hardcore techno",
+                    "hip house"
+                ],
+                "href": "https://api.spotify.com/v1/artists/07lbidCU8ZwtNCUrmaO0QU",
+                "id": "07lbidCU8ZwtNCUrmaO0QU",
+                "images": [
+                    {
+                        "height": 1000,
+                        "url": "https://i.scdn.co/image/532156a01e17a5044468dc4921157dddcc457743",
+                        "width": 1000
+                    },
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/b69238041a606140e0ccabd9b0445dbc0a17775e",
+                        "width": 640
+                    },
+                    {
+                        "height": 200,
+                        "url": "https://i.scdn.co/image/a504cd709042fdf9e9df02df9236246ba67162cc",
+                        "width": 200
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/7c776f82a335fcfb45d9667a9dd5e7657f8037b6",
+                        "width": 64
+                    }
+                ],
+                "name": "Bizarre Inc",
+                "popularity": 34,
+                "type": "artist",
+                "uri": "spotify:artist:07lbidCU8ZwtNCUrmaO0QU"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/7F6fxMv0tz2Clj8H02Y2k7"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 11756
+                },
+                "genres": ["mexican hip hop", "rap underground mexicano"],
+                "href": "https://api.spotify.com/v1/artists/7F6fxMv0tz2Clj8H02Y2k7",
+                "id": "7F6fxMv0tz2Clj8H02Y2k7",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb96c8cd6dd599bc37634d50c2",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab6761610000517496c8cd6dd599bc37634d50c2",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f17896c8cd6dd599bc37634d50c2",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizor",
+                "popularity": 40,
+                "type": "artist",
+                "uri": "spotify:artist:7F6fxMv0tz2Clj8H02Y2k7"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/7CsMBY0plDn7za12JXMlMg"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 384
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/7CsMBY0plDn7za12JXMlMg",
+                "id": "7CsMBY0plDn7za12JXMlMg",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273afef36ca19a9ab89e50bda9d",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02afef36ca19a9ab89e50bda9d",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851afef36ca19a9ab89e50bda9d",
+                        "width": 64
+                    }
+                ],
+                "name": "Bizarre",
+                "popularity": 24,
+                "type": "artist",
+                "uri": "spotify:artist:7CsMBY0plDn7za12JXMlMg"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/3j0PaNx9kb5zLaVTWOjjqv"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 126
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/3j0PaNx9kb5zLaVTWOjjqv",
+                "id": "3j0PaNx9kb5zLaVTWOjjqv",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb3f0b873cb1da6868945ac606",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab676161000051743f0b873cb1da6868945ac606",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f1783f0b873cb1da6868945ac606",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizrq",
+                "popularity": 9,
+                "type": "artist",
+                "uri": "spotify:artist:3j0PaNx9kb5zLaVTWOjjqv"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/3IE9OtMFMZFj8CEgflFlPw"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 15667
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/3IE9OtMFMZFj8CEgflFlPw",
+                "id": "3IE9OtMFMZFj8CEgflFlPw",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebbd07ec2848c806ec1c8d3449",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174bd07ec2848c806ec1c8d3449",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178bd07ec2848c806ec1c8d3449",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizzy Crook",
+                "popularity": 30,
+                "type": "artist",
+                "uri": "spotify:artist:3IE9OtMFMZFj8CEgflFlPw"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/4lS9Yg5DF4h5zDAMrSJwU9"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 6934
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/4lS9Yg5DF4h5zDAMrSJwU9",
+                "id": "4lS9Yg5DF4h5zDAMrSJwU9",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebcce78d0ea350bff3f3ef407e",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174cce78d0ea350bff3f3ef407e",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178cce78d0ea350bff3f3ef407e",
+                        "width": 160
+                    }
+                ],
+                "name": "Bzars",
+                "popularity": 40,
+                "type": "artist",
+                "uri": "spotify:artist:4lS9Yg5DF4h5zDAMrSJwU9"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/2efQtwmK9JTEiWgTaBlXUD"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 119
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/2efQtwmK9JTEiWgTaBlXUD",
+                "id": "2efQtwmK9JTEiWgTaBlXUD",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb4b956d2eef19a90fceec7895",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab676161000051744b956d2eef19a90fceec7895",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f1784b956d2eef19a90fceec7895",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizz",
+                "popularity": 16,
+                "type": "artist",
+                "uri": "spotify:artist:2efQtwmK9JTEiWgTaBlXUD"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/543qT2FUG9M5mU0fDz93ES"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 7
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/543qT2FUG9M5mU0fDz93ES",
+                "id": "543qT2FUG9M5mU0fDz93ES",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27372c27c26ab5d929cd5083774",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0272c27c26ab5d929cd5083774",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485172c27c26ab5d929cd5083774",
+                        "width": 64
+                    }
+                ],
+                "name": "Bizarro 99",
+                "popularity": 6,
+                "type": "artist",
+                "uri": "spotify:artist:543qT2FUG9M5mU0fDz93ES"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/6BWehK6aRgVlFZskKYzhFQ"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 30989
+                },
+                "genres": [
+                    "full on",
+                    "progressive psytrance",
+                    "psychedelic trance"
+                ],
+                "href": "https://api.spotify.com/v1/artists/6BWehK6aRgVlFZskKYzhFQ",
+                "id": "6BWehK6aRgVlFZskKYzhFQ",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebc61bddb215e23cdeaf6e0f69",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174c61bddb215e23cdeaf6e0f69",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178c61bddb215e23cdeaf6e0f69",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizzare Contact",
+                "popularity": 34,
+                "type": "artist",
+                "uri": "spotify:artist:6BWehK6aRgVlFZskKYzhFQ"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/1x3h782rndvyBIsITAocXG"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 754
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/1x3h782rndvyBIsITAocXG",
+                "id": "1x3h782rndvyBIsITAocXG",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5eb8adacbb0c313e9daa8715d02",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab676161000051748adacbb0c313e9daa8715d02",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f1788adacbb0c313e9daa8715d02",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizza",
+                "popularity": 14,
+                "type": "artist",
+                "uri": "spotify:artist:1x3h782rndvyBIsITAocXG"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5CQ4GbTtKAUcQldoOeBJJA"
+                },
+                "followers": {
+                    "href": null,
+                    "total": 32
+                },
+                "genres": [],
+                "href": "https://api.spotify.com/v1/artists/5CQ4GbTtKAUcQldoOeBJJA",
+                "id": "5CQ4GbTtKAUcQldoOeBJJA",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab6761610000e5ebfcfb59b8e24b27befef4da48",
+                        "width": 640
+                    },
+                    {
+                        "height": 320,
+                        "url": "https://i.scdn.co/image/ab67616100005174fcfb59b8e24b27befef4da48",
+                        "width": 320
+                    },
+                    {
+                        "height": 160,
+                        "url": "https://i.scdn.co/image/ab6761610000f178fcfb59b8e24b27befef4da48",
+                        "width": 160
+                    }
+                ],
+                "name": "Bizar",
+                "popularity": 6,
+                "type": "artist",
+                "uri": "spotify:artist:5CQ4GbTtKAUcQldoOeBJJA"
+            }
+        ],
+        "limit": 20,
+        "next": "https://api.spotify.com/v1/search?query=Bizarrap&type=artist&locale=es-ES%2Ces%3Bq%3D0.8%2Cen-US%3Bq%3D0.5%2Cen%3Bq%3D0.3&offset=20&limit=20",
+        "offset": 0,
+        "previous": null,
+        "total": 191
+    }
+}

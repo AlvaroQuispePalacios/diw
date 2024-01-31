@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify API data</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <h1>Search by artist:</h1>
+    <input type="text" placeholder="Search artist" id="artistName" />
+    <button id="bgetArtist">Info</button>
+
+    <div id="results">
+
+        <article class="artist-card">
+            <h2 class="artist-card-title">Nombre del artista</h2>
+            <p>Popularidad</p>
+            <div>
+                <img class="artist-card-img"
+                    src="https://i.pinimg.com/originals/d0/5c/77/d05c77c423324c5b06f09fae67869373.jpg"
+                    alt="Imagen del artista">
+            </div>
+        </article>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="./js/spotify.js"></script>
+</body>
+
+</html>

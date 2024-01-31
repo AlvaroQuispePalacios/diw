@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#results {
+    margin-top: 2em;
+}
+
+form label {
+    display: inline-block;
+    width: 30%;
+}
+
+.artist-card{
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+.artist-card-img{
+    width: 100%;
+
+}
