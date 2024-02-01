@@ -2,10 +2,19 @@ var client_id = "";
 var client_secret = "";
 var access_token = "";
 
-function createCardArtist(){
-    
+function createCardArtist(artistName, artistPopularity, artistImg) {
+    return `
+    <article class="artist-card">
+        <h2 class="artist-card-title">${artistName}</h2>
+        <p>Popularidad: ${artistPopularity}</p>
+        <div>
+            <img class="artist-card-img"
+                src="${artistImg}"
+                alt="Imagen del artista">
+        </div>
+    </article>
+    `;
 }
-
 
 //We create the Spotify class with the API to make the call to
 function Spotify() {
@@ -22,10 +31,8 @@ Spotify.prototype.getArtist = function (artist) {
         },
     }).done(function (response) {
         response.artists.items.forEach((item) => {
-            $("#results").append(item.name);
+            $("#results").append(createCardArtist(item.name, item.popularity, item.images[1].url));
         });
-
-        console.log(response);
     });
 };
 
@@ -38,7 +45,13 @@ Spotify.prototype.getArtistById = function (artistId) {
             Authorization: "Bearer " + access_token,
         },
     }).done(function (response) {
-        console.log(response);
+        // response.artists.items.forEach((item) => {
+        //     if(item.id == artistId){
+        //         $("#results").append(item.name);
+        //     }
+        // });
+        // console.log(response);
+        console.log(artistId);
     });
 };
 
