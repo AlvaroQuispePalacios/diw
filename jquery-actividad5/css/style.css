@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body{
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background-color: #181818;
-    
 }
 
 *{
@@ -19,7 +18,15 @@ h1{
     font-size: 3rem;
 }
 #results {
+    margin: 0 auto;
+    padding: .5rem;
     margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    min-width: 300px;
+    max-width: 1200px;
 }
 
 form label {
@@ -87,15 +94,11 @@ input{
 
 
 
-/* .artist-card-content section{
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #1db954;
-    border-radius: 50%;
-    width: 3rem;
-    padding: .2rem;
-} */
+.artist-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
 
 .artist-img{
     width: 100%;
@@ -106,6 +109,12 @@ input{
     color: #fff;
 }
 
+.artist-card-type{
+    color: #b3b3b3;
+    font-size: 1rem;
+}
+
 .artist-card-popularity{
     color: #b3b3b3;
+    font-size: 1.1rem;
 }
