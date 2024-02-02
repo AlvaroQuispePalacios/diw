@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body{
     margin: 0;
     padding: 0;
+    background-color: #181818;
+    
 }
 
 *{
     padding: 0;
+    font-family: roboto, sans-serif;
     margin: 0;
     box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    color: #1db954;
+    font-size: 3rem;
 }
 #results {
     margin-top: 2em;
@@ -17,15 +27,85 @@ form label {
     width: 30%;
 }
 
+input{
+    padding: .5rem;
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
 .artist-card{
     display: flex;
     flex-direction: column;
-    max-width: 20rem;
+    gap: .5rem;
+    width: 14rem;
+    /* max-width: 14rem; */
     padding: 1rem;
-    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #212121;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.artist-card:hover .artist-card-img div{
+    background-color: #21c75b;
+    box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.24);
+    animation: ease .2s animationSearch; 
+    opacity: 1;
+
+}
+
+@keyframes animationSearch{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.artist-card:hover{
+    background-color: #535353;
 }
 
 .artist-card-img{
-    width: 100%;
+    position: relative;
+}
 
+.artist-card-img > div{
+    position: absolute;
+    padding: .5rem;
+    bottom: .5rem;
+    right: .2rem;
+    width: 3rem;
+    background-color: #1db954;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+
+
+/* .artist-card-content section{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #1db954;
+    border-radius: 50%;
+    width: 3rem;
+    padding: .2rem;
+} */
+
+.artist-img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.artist-card-title{
+    color: #fff;
+}
+
+.artist-card-popularity{
+    color: #b3b3b3;
 }
