@@ -2,8 +2,6 @@
     "artists": {
         "href": "https://api.spotify.com/v1/search?query=Bizarrap&type=artist&locale=es-ES%2Ces%3Bq%3D0.8%2Cen-US%3Bq%3D0.5%2Cen%3Bq%3D0.3&offset=0&limit=20",
         "items": [
-            var client_id = "8be8bb5e49d24d39a5fcf7a52ff9d029";
-var client_secret = "18555ef95e1d477da694d44f8af1d8f6";
             {
                 "external_urls": {
                     "spotify": "https://open.spotify.com/artist/716NhGYqD1jl2wI1Qkgq36"

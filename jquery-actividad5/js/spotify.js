@@ -63,9 +63,9 @@ function createCardTrack(trackName, trackPopularity, type, trackImg) {
     `;
 }
 
-function createCardAlbum(albumName, type, albumReleaseDate, albumImg){
+function createCardAlbum(albumId, albumName, type, albumReleaseDate, albumImg) {
     return `
-    <article class="artist-card">
+    <article class="artist-card albumId" data-id="${albumId}" album-img="${albumImg}">
         <div class="artist-card-img">
             <img
                 class="artist-img"
@@ -87,15 +87,36 @@ function createCardAlbum(albumName, type, albumReleaseDate, albumImg){
             <h2 class="artist-card-title">${albumName}</h2>
             <p class="artist-card-type">${albumReleaseDate}</p>
             <p class="artist-card-type">${type}</p>
-            
-
         </section>
     </article>
     `;
 }
 
-function capitalizarPrimeraLetra(str){
+function createItemListAlbum(songNumber, songName, songTime) {
+    return `
+    <article class="list-tracks-song">
+        <div>
+            <span>${songNumber}.</span>
+            <span>${songName}</span>
+        </div>
+        <div>
+            <span>${songTime}</span>
+        </div>
+    </article>
+    `;
+}
+
+function capitalizarPrimeraLetra(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function transformMsToMinutes(milisegundos) {
+    // Calcula minutos y segundos
+    let minutos = Math.floor(milisegundos / 60000); // 1 minuto = 60000 milisegundos
+    let segundos = ((milisegundos % 60000) / 1000).toFixed(0);
+
+    // Formatea el resultado
+    return minutos + ":" + (segundos < 10 ? '0' : '') + segundos;
 }
 
 //We create the Spotify class with the API to make the call to
@@ -118,12 +139,12 @@ Spotify.prototype.getArtist = function (artist) {
         // Se crea la tarjeta del artista y si esta no poseé una imagen usaremos la que tenemos por defecto
 
         response.artists.items.forEach((item) => {
-            if(item.images.length > 0){
+            if (item.images.length > 0) {
                 $("#results").append(
                     createCardArtist(item.id, item.name, item.popularity, capitalizarPrimeraLetra(item.type), item.images[0].url)
                 );
             }
-            else{
+            else {
                 $("#results").append(
                     createCardArtist(item.name, item.popularity, capitalizarPrimeraLetra(item.type), imgDefault)
                 );
@@ -131,13 +152,13 @@ Spotify.prototype.getArtist = function (artist) {
         });
 
         response.tracks.items.forEach((item) => {
-            if(item.album.images.length > 0){
+            if (item.album.images.length > 0) {
                 $("#results").append(
-                    createCardTrack(item.name, item.popularity,capitalizarPrimeraLetra(item.type), item.album.images[0].url)
+                    createCardTrack(item.name, item.popularity, capitalizarPrimeraLetra(item.type), item.album.images[0].url)
                 );
-            }else{
+            } else {
                 $("#results").append(
-                    createCardTrack(item.name, item.popularity,capitalizarPrimeraLetra(item.type), imgDefault)
+                    createCardTrack(item.name, item.popularity, capitalizarPrimeraLetra(item.type), imgDefault)
                 );
             }
         });
@@ -155,25 +176,41 @@ Spotify.prototype.getArtistById = function (artistId) {
     }).done(function (response) {
         $("#results article").remove();
         response.items.forEach((item) => {
-            $("#results").append(createCardAlbum(item.name, capitalizarPrimeraLetra(item.type), item.release_date, item.images[0].url));
-
+            $("#results").append(createCardAlbum(item.id, item.name, capitalizarPrimeraLetra(item.type), item.release_date, item.images[0].url));
         });
-        console.log(response.href);
     });
 };
 
-//Buscar las canciones de un album
-// Spotify.prototype.getArtistById = function (albumId) {
-//     $.ajax({
-//         type: "GET",
-//         url: this.apiUrl + "v1/artist/albums" + albumId + "/albums",
-//         headers: {
-//             Authorization: "Bearer " + access_token,
-//         },
-//     }).done(function (response) {
-//         console.log(response);
-//     });
-// };
+// Buscar las canciones de un album
+Spotify.prototype.getAlbumById = function (albumId, albumImg) {
+    $.ajax({
+        type: "GET",
+        url: this.apiUrl + "v1/albums/" + albumId + "/tracks",
+        headers: {
+            Authorization: "Bearer " + access_token,
+        },
+    }).done(function (response) {
+        $("#results article").remove();
+        $("#results").html(`
+        <article class="list-tracks">
+            <section class="list-tracks-background">
+                <img
+                    src="${albumImg}"
+                    alt="background"
+                />
+            </section>
+
+            <section class="list-tracks-content">
+
+            </section>
+        </article>
+        `);
+
+        response.items.forEach((item, index) => {
+            $("#results .list-tracks-content").append(createItemListAlbum(item.track_number, item.name, transformMsToMinutes(item.duration_ms)));
+        });
+    });
+};
 
 //This fragment is the first thing that is loaded, when the $(document).ready
 $(function () {
@@ -200,5 +237,9 @@ $(function () {
 
     $("#results").on("click", ".artistId", function () {
         spotify.getArtistById($(this).attr("data-id"));
+    });
+
+    $("#results").on("click", ".albumId", function () {
+        spotify.getAlbumById($(this).attr("data-id"), $(this).attr("album-img"));
     });
 });
