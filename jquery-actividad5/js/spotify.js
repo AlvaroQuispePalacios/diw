@@ -5,7 +5,7 @@ var imgDefault = "https://i.pinimg.com/originals/d0/5c/77/d05c77c423324c5b06f09f
 
 function createCardArtist(artistId, artistName, artistPopularity, type, artistImg) {
     return `
-    <article class="artist-card artistId")" data-id="${artistId}">
+    <article class="artist-card artistId" data-id="${artistId}">
         <div class="artist-card-img">
             <img
                 class="artist-img"
