@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="e">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descenso a la locura por Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>List of Posts</h2>
+        <ul>
+            <li></li>
+        </ul>
+        <h2>Create Post</h2>
+        <form>
+            <input type="text" name="title">
+            <input type="text" name="content">
+            <button type="button">Subir Post</button>
+        </form>
+    </div>
+    <script>
+        const { createApp } = Vue;
+        let app = createApp({
+            data() {
+                return {
+                    
+                };
+            },
+            // Methods
+            methods: {
+
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            {{ hola.a }}
+        </h1>
+        <p v-html="messagehtml"></p>
+        <!-- v-if, v-else -->
+        <!-- // Dependiendo de lo que tenga show se mostrara o no el texto que tenga la diretiva v-if="show" -->
+        <p v-if="show">Hola condicional if</p>
+        <p v-else="show">Hola condicional else</p>
+
+        <!-- <img v-bind:src="img"> -->
+        <ul v.if="items.length">
+            <li v-for="(item, index) in items" v-bind:key=" index">index {{index}} = {{item}} </li>
+        </ul>
+
+        <button v-on:click="sayHello">Click</button>
+
+        <form action="">
+            <input v-model="form.name" type="text" name="name">
+            <input v-model="form.email" type="email" name="email">
+        </form>
+
+        <div>{{form.name}}</div>
+        <div>{{form.email}}</div>
+
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        let app = createApp({
+            data() {
+                return {
+                    message: 'Hello Vue!',
+                    messagehtml: "<span>Hola mensaje html<span>",
+                    show: true,
+                    img: "ATLjpg.jpg",
+                    num: 2,
+                    hola: {
+                        a:"Hola Mundo"
+                    },
+                    items: [1, 2, 3, 4, 5],
+                    form: {
+                        name: "",
+                        email: ""
+                    }
+                };
+            },
+            // Methods
+            methods:{
+                sayHello: function(e){
+                    this.num += 1
+                    console.log(this.num + 1);
+                    return this.num + 1;
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
