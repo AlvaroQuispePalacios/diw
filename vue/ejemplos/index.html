@@ -21,7 +21,7 @@
 
         <!-- <img v-bind:src="img"> -->
         <ul v.if="items.length">
-            <li v-for="(item, index) in items" v-bind:key=" index">index {{index}} = {{item}} </li>
+            <li v-for="(item, index) in items" v-bind:key="index">index {{index}} = {{item}} </li>
         </ul>
 
         <button v-on:click="sayHello">Click</button>

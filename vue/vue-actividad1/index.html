@@ -11,14 +11,19 @@
 <body>
     <div id="app">
         <h2>List of Posts</h2>
-        <ul>
-            <li></li>
+        <ul v-if="posts.length">
+            <li v-for="(item, index) in posts" v-bind:key="index">
+                {{item.title}}
+                {{item.content}}
+                <button v-on:click="editPost">Editar</button>
+                <button v-on:click="deletePost">Eliminar</button>
+            </li>
         </ul>
         <h2>Create Post</h2>
         <form>
-            <input type="text" name="title">
-            <input type="text" name="content">
-            <button type="button">Subir Post</button>
+            <input v-model="title" type="text" name="title">
+            <input v-model="content" type="text" name="content">
+            <button type="button" v-on:click="savePost">Subir Post</button>
         </form>
     </div>
     <script>
@@ -26,12 +31,25 @@
         let app = createApp({
             data() {
                 return {
-                    
+                    title: "",
+                    content: "",
+                    posts: []
                 };
             },
             // Methods
             methods: {
+                savePost: function () {
+                    let post = { title: this.title, content: this.content };
+                    this.posts.push(post);
+                },
 
+                editPost: function (key) {
+                    console.log(key);
+                },
+
+                deletePost: function () {
+                    
+                }
             }
         }).mount('#app')
     </script>
