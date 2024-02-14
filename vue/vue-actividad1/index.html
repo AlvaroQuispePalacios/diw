@@ -13,6 +13,7 @@
         <h2>List of Posts</h2>
         <ul v-if="posts.length">
             <li v-for="(item, index) in posts" v-bind:key="index">
+                {{item.author}}
                 {{item.titlePost}}
                 {{item.contentPost}}
                 <button v-on:click="editPost(index)">Editar</button>
@@ -21,8 +22,15 @@
         </ul>
         <h2 v-model="titlePage">{{titlePage}}</h2>
         <form>
+            <label>Titulo:</label>
             <input v-model="titlePost" type="text" name="title">
-            <input v-model="contentPost" type="text" name="content">
+            <br>
+            <label>Contenido:</label>
+            <textarea v-model="contentPost" name="content"></textarea>
+            <br>
+            <label>Autor:</label>
+            <input type="text" v-model="author">
+            <br>
             <button type="button" v-on:click="savePost" v-if="createPost">Subir Post</button>
             <button type="button" v-else="createPost" v-on:click="setPost">Guardar Cambios</button>
         </form>
@@ -36,7 +44,11 @@
                     titlePost: "",
                     contentPost: "",
                     createPost: true,
-                    
+                    image: "",
+                    author: "",
+                    creationDate: "",
+                    publicationDate: "",
+                    postStatus: "draft",
                     index: 0,
                     posts: []
                 };
@@ -44,16 +56,20 @@
             // Methods
             methods: {
                 savePost: function () {
-                    let post = {titlePost: this.titlePost, contentPost: this.contentPost };
+                    let post = {titlePost: this.titlePost, contentPost: this.contentPost, author: this.author, image: this.image, creationDate: this.creationDate, publicationDate: this.publicationDate, postStatus: this.postStatus};
                     this.posts.push(post);
                 },
 
                 editPost: function (index) {
+                    // 
                     this.titlePost = this.posts[index].titlePost;
                     this.contentPost = this.posts[index].contentPost;
+                    this.author = this.posts[index].author;
+                    this.image = this.posts[index].image;
+                    this.index = index;
+                    // 
                     this.createPost = false;
                     this.titlePage = "Edit Post";
-                    this.index = index;
                 },
 
                 deletePost: function (index) {
@@ -61,11 +77,10 @@
                 },
 
                 setPost: function(){
-                    let setPost = {titlePost: this.titlePost, contentPost: this.contentPost};
+                    let setPost = {titlePost: this.titlePost, contentPost: this.contentPost, author: this.author};
                     this.posts.splice(this.index, 1, setPost);
                     this.createPost = true;
                     this.titlePage = "Create Post";
-
                 }
             }
         }).mount('#app')

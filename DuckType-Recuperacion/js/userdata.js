@@ -48,8 +48,6 @@ function crearBaseDeDatosUsuarioConectado() {
         usuarioConectado = conexion.result;
         console.log("Base de datos abierta", usuarioConectado);
         leerDatosDelUsuarioDeUsuarioConectado();
-        
-
     }
 
     conexion.onerror = (error) => {
