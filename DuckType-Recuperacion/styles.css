@@ -406,3 +406,18 @@ button:hover{
 @media (min-width: 1400px) {
 
 }
+
+.contenedor-posts{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 700px;
+    border: 1px solid lightgreen;
+    padding: 1rem;
+    overflow: hidden scroll;
+
+}
+
+.post-main{
+    border: 1px solid lightcoral;
+}

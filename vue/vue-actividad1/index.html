@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html lang="e">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descenso a la locura por Vue</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        *{
+            font-family: lato;
+        }
+        .post{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 400px;
+            padding: 1rem;
+            border: 1px solid lightblue;
+            border-radius: 5px;
+
+        }
+
+        .post-title{
+            text-align: center;
+            margin: 0;
+        }
+
+        .post-content{
+            min-height: 50px;
+        }
+
+        .post-footer{
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+
+        .post-footer p{
+            margin: 0;
+        }
+
+        .post-buttons{
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn{
+            padding: .5rem;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            margin: 1rem;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,11 +65,31 @@
         <h2>List of Posts</h2>
         <ul v-if="posts.length">
             <li v-for="(item, index) in posts" v-bind:key="index">
-                {{item.author}}
-                {{item.titlePost}}
-                {{item.contentPost}}
-                <button v-on:click="editPost(index)">Editar</button>
-                <button v-on:click="deletePost(index)">Eliminar</button>
+                <div class="post">
+                    <h2 class="post-title">
+                        {{item.titlePost}}
+                    </h2>
+                    <section class="post-content">
+                        {{item.contentPost}}
+                    </section>
+
+                    <section class="post-footer">
+                        <section>
+                            <p>
+                                Autor: {{item.author}}
+                            </p>
+                            <p>
+                                Fecha de Creacion: 
+                            </p>
+                        </section>
+                        
+                        <section class="post-buttons">
+                            <button v-on:click="editPost(index)" class="btn btn-editar">Editar</button>
+                            <button v-on:click="deletePost(index)" class="btn btn-eliminar">Eliminar</button>
+                        </section>
+                    </section>
+
+                </div>
             </li>
         </ul>
         <h2 v-model="titlePage">{{titlePage}}</h2>
@@ -29,8 +101,12 @@
             <textarea v-model="contentPost" name="content"></textarea>
             <br>
             <label>Autor:</label>
-            <input type="text" v-model="author">
-            <br>
+            <select v-model="author">
+                <option>Yo</option>
+                <option>Tu</option>
+                <option>El</option>
+            </select>
+
             <button type="button" v-on:click="savePost" v-if="createPost">Subir Post</button>
             <button type="button" v-else="createPost" v-on:click="setPost">Guardar Cambios</button>
         </form>

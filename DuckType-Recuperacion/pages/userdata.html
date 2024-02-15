@@ -1,240 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DuckType</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="../styles.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <nav
-        class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-dark"
-      >
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="../img/LogoEchado.png" alt="DuckType" />
-          </a>
-          <button
-            class="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-lg-auto">
-              <a class="nav-link" href="./userData.html">
-                <img
-                  src=""
-                  class="userImg rounded-circle"
-                  width="40px"
-                  id="userAvatarWeb"
-                />
-                <span id="userNameWeb"></span>
-              </a>
-              <a class="nav-link" href="./userIndex.html">Home</a>
-              <a class="nav-link" href="#">Contact</a>
-              <a class="nav-link" id="logOut" href="../index.html">Log Out</a>
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../img/LogoEchado.png" alt="DuckType" />
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-lg-auto">
+                        <a class="nav-link" href="./userData.html">
+                            <img src="" class="userImg rounded-circle" width="40px" id="userAvatarWeb" />
+                            <span id="userNameWeb"></span>
+                        </a>
+                        <a class="nav-link" href="./userIndex.html">Home</a>
+                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" id="logOut" href="../index.html">Log Out</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </nav>
+        </nav>
     </header>
     <main>
-      <div class="container-fluid p-1 p-lg-4">
-        <div class="row position-relative">
-          <div class="col-12 col-md-4 col-lg-4">
-            <div class="user__card d-flex justify-content-evenly gap-3">
-              <div class="d-flex align-items-center">
-                <img src="" class="userImageCard" id="userImageCard" />
-              </div>
-              <div class="d-flex flex-column">
-                <h4 class="usernameCard" id="usernameCard"></h4>
-                <p>Presentate a los demás usuarios</p>
-                <div class="d-flex justify-content-end">
-                  <button class="" id="btnDeleteAccount">
-                    Eliminar cuenta
-                  </button>
-                  <button class="btnEditUser" id="btnEditUser">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="20"
-                      width="20"
-                      fill="white"
-                      viewBox="0 0 512 512"
-                    >
-                      <path
-                        d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
-                      />
-                    </svg>
-                  </button>
+        <div class="container-fluid p-1 p-lg-4">
+            <div class="row position-relative">
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="user__card d-flex justify-content-evenly gap-3">
+                        <div class="d-flex align-items-center">
+                            <img src="" class="userImageCard" id="userImageCard" />
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h4 class="usernameCard" id="usernameCard"></h4>
+                            <p>Presentate a los demás usuarios</p>
+                            <div class="d-flex justify-content-end">
+                                <button class="" id="btnDeleteAccount">
+                                    Eliminar cuenta
+                                </button>
+                                <button class="btnEditUser" id="btnEditUser">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="white"
+                                        viewBox="0 0 512 512">
+                                        <path
+                                            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user__form d-none d-md-block">
+                        <h3>Información</h3>
+                        <label>Email:</label>
+                        <input type="email" id="userDataEmailForm" readonly />
+                        <label>Username:</label>
+                        <input type="text" id="userDataUsernameForm" readonly />
+                        <input type="text" id="userDataAvatarForm" hidden readonly />
+                        <input type="text" id="userDataRolForm" hidden />
+                        <label for="">Password</label>
+                        <input type="password" id="userDataPasswordForm" readonly />
+                    </div>
+
+                    <div class="envoltorio-popup">
+                        <div class="popup">
+                            <div class="cerrar-popup">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 384 512">
+                                    <path
+                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                </svg>
+                            </div>
+
+                            <div class="contenido-popup">
+                                <h3>Actualizar información</h3>
+                                <input type="email" id="userDataEmailEdit" / hidden>
+                                <label>Username:</label>
+                                <input type="text" id="userDataUsernameEdit" />
+                                <label for="">Password</label>
+                                <input type="text" id="userDataPasswordEdit" />
+                                <input type="text" id="userDataRolEdit" hidden />
+                                <input type="text" id="userDataAvatarEdit" hidden />
+                                <label>Avatar</label><br />
+                                <small>Si no se elige un avatar se usara el que ya tienes</small>
+                                <div class="mt-2 d-flex flex-row justify-content-center" id="imagesUserDataEdit">
+                                    <input class="position-absolute" type="radio" name="image"
+                                        id="avatar1UserDataEdit" />
+                                    <label class="p-2" for="avatar1UserDataEdit">
+                                        <img class="avatar img-fluid rounded-circle" src="../img/pato1.jpg"
+                                            ruta="/DuckType-Recuperacion/img/pato1.jpg" />
+                                    </label>
+
+                                    <input class="position-absolute" type="radio" name="image"
+                                        id="avatar2UserDataEdit" />
+
+                                    <label class="p-2" for="avatar2UserDataEdit">
+                                        <img class="avatar img-fluid rounded-circle" src="../img/pato2.png"
+                                            ruta="/DuckType-Recuperacion/img/pato2.png" />
+                                    </label>
+
+                                    <input class="position-absolute" type="radio" name="image"
+                                        id="avatar3UserDataEdit" />
+                                    <label class="p-2" for="avatar3UserDataEdit">
+                                        <img class="avatar img-fluid rounded-circle" src="../img/pato3.jpg"
+                                            ruta="/DuckType-Recuperacion/img/pato3.jpg" />
+                                    </label>
+                                </div>
+
+                                <button class="" id="btnSaveChangeUserData">
+                                    Guardar cambios
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="envoltorio-popup msgCambiosValidosPopup">
+                        <div class="popup">
+                            <div class="cerrar-popup">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 384 512">
+                                    <path
+                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                </svg>
+                            </div>
+                            <div class="contenido-popup">Cambios realizado con exito</div>
+                        </div>
+                    </div>
+
+                    <div class="envoltorio-popup msgCuentaEliminada">
+                        <div class="popup">
+                            <div class="cerrar-popup">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="16" viewBox="0 0 384 512">
+                                    <path
+                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                </svg>
+                            </div>
+                            <div class="contenido-popup">
+                                <p>Eliminar la cuenta permanentemente</p>
+                                <button>Si</button>
+                                <button>No</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="col-12 col-md-8 col-lg-8">
+                    <div>
+                        <section class="d-flex justify-content-between ">
+                            <h2 class="">Articles</h2>
+                            <div class="d-flex align-items-center">
+                                <input type="search">
+                                <div>Icono de lupa</div>
+                            </div>
+                        </section>
+                        <section class="contenedor-posts">
+
+                            <article class="d-flex flex-column post-main">
+
+                                <h2 class="post-title">Titulo</h2>
+
+                                <section class="post-content">
+                                    
+                                    <section class="post-img">
+                                        <img src="../img/gatoTroste.jpg" alt="">
+                                    </section>
+
+                                    <section class="post-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab sed tempore ex obcaecati rem architecto voluptates doloribus atque, natus blanditiis suscipit nihil corporis fuga repellendus eum possimus. Omnis, pariatur nobis!
+                                    </section>
+
+                                    <section>
+                                        <select name="" id="">
+                                            <option value="">Publicado</option>
+                                            <option value="">No Publicado</option>
+                                        </select>
+                                        <div class="post-buttons">
+                                            <button>Editar</button>
+                                            <button>Eliminar</button>
+                                        </div>
+                                    </section>
+
+                                </section>
+                            </article>
+                            <article class="post-main">POST</article>
+                        </section>  
+                        <section>
+                            Agregar Post
+                        </section>
+                    </div>
+                </div>
             </div>
-
-            <div class="user__form d-none d-md-block">
-              <h3>Información</h3>
-              <label>Email:</label>
-              <input type="email" id="userDataEmailForm" readonly />
-              <label>Username:</label>
-              <input type="text" id="userDataUsernameForm" readonly />
-              <input type="text" id="userDataAvatarForm" hidden readonly />
-              <input type="text" id="userDataRolForm" hidden />
-              <label for="">Password</label>
-              <input type="password" id="userDataPasswordForm" readonly />
-            </div>
-
-            <div class="envoltorio-popup">
-              <div class="popup">
-                <div class="cerrar-popup">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="20"
-                    width="16"
-                    viewBox="0 0 384 512"
-                  >
-                    <path
-                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                    />
-                  </svg>
-                </div>
-
-                <div class="contenido-popup">
-                  <h3>Actualizar información</h3>
-                  <input type="email" id="userDataEmailEdit"/ hidden>
-                  <label>Username:</label>
-                  <input type="text" id="userDataUsernameEdit" />
-                  <label for="">Password</label>
-                  <input type="text" id="userDataPasswordEdit" />
-                  <input type="text" id="userDataRolEdit" hidden />
-                  <input type="text" id="userDataAvatarEdit" hidden />
-                  <label>Avatar</label><br />
-                  <small
-                    >Si no se elige un avatar se usara el que ya tienes</small
-                  >
-                  <div
-                    class="mt-2 d-flex flex-row justify-content-center"
-                    id="imagesUserDataEdit"
-                  >
-                    <input
-                      class="position-absolute"
-                      type="radio"
-                      name="image"
-                      id="avatar1UserDataEdit"
-                    />
-                    <label class="p-2" for="avatar1UserDataEdit">
-                      <img
-                        class="avatar img-fluid rounded-circle"
-                        src="../img/pato1.jpg"
-                        ruta="/DuckType-Recuperacion/img/pato1.jpg"
-                      />
-                    </label>
-
-                    <input
-                      class="position-absolute"
-                      type="radio"
-                      name="image"
-                      id="avatar2UserDataEdit"
-                    />
-
-                    <label class="p-2" for="avatar2UserDataEdit">
-                      <img
-                        class="avatar img-fluid rounded-circle"
-                        src="../img/pato2.png"
-                        ruta="/DuckType-Recuperacion/img/pato2.png"
-                      />
-                    </label>
-
-                    <input
-                      class="position-absolute"
-                      type="radio"
-                      name="image"
-                      id="avatar3UserDataEdit"
-                    />
-                    <label class="p-2" for="avatar3UserDataEdit">
-                      <img
-                        class="avatar img-fluid rounded-circle"
-                        src="../img/pato3.jpg"
-                        ruta="/DuckType-Recuperacion/img/pato3.jpg"
-                      />
-                    </label>
-                  </div>
-
-                  <button class="" id="btnSaveChangeUserData">
-                    Guardar cambios
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="envoltorio-popup msgCambiosValidosPopup">
-              <div class="popup">
-                <div class="cerrar-popup">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="20"
-                    width="16"
-                    viewBox="0 0 384 512"
-                  >
-                    <path
-                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                    />
-                  </svg>
-                </div>
-                <div class="contenido-popup">Cambios realizado con exito</div>
-              </div>
-            </div>
-
-            <div class="envoltorio-popup msgCuentaEliminada">
-              <div class="popup">
-                <div class="cerrar-popup">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="20"
-                    width="16"
-                    viewBox="0 0 384 512"
-                  >
-                    <path
-                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-                    />
-                  </svg>
-                </div>
-                <div class="contenido-popup">
-                  <p>Eliminar la cuenta permanentemente</p>
-                  <button>Si</button>
-                  <button>No</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-8 col-lg-8">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-            consequuntur, ex, aliquid voluptatibus nobis debitis mollitia
-            officiis a magni expedita vero, ad sint earum fugit. Provident
-            tenetur maxime officia nesciunt!
-          </div>
         </div>
-      </div>
     </main>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
     <!-- <script src="/DuckType-SignUp(DB)2/js/userdata.js"></script> -->
     <script src="../js/userData.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-  </body>
+</body>
+
 </html>
