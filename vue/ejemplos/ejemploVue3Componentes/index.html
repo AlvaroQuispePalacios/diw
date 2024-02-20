@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        /* input[type="button"]{
+
+        } */
+        small {
+            color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Pon un numero bro</h1>
+        <input type="number" v-model="num">
+        <input type="button" value="send" v-on:click="send"></input>
+
+        <p v-if="error">
+            <small>{{error}}</small>
+        </p>
+
+        <!-- <Number numero="5"></Number> -->
+        <Number v-for= "n in numbers" v-bind:numero="n" :key="n" v-on:clicked-number="numberSelected"></Number>
+        <p v-if="selectedItem">
+            <small>El numero es {{selectedItem}}</small>
+        </p>
+    </div>
+
+    <script type="module">
+        import Number from "./Number.js";
+
+        const { createApp } = Vue;
+        let app = createApp({
+            data: function () {
+                return {
+                    numbers: [],
+                    num: null,
+                    error: "",
+                    selectedItem: null
+                };
+            },
+            components: {
+                Number
+            },
+            methods: {
+                send: function () {
+                    this.error = "";
+                    this.selectedItem = null;
+                    // elimina decimales y comprueba si es igual al valor entero
+                    // Si ingresa un string el valor es 0
+                    if (~~this.num === this.num) {
+                        // Comprobar si existe el numero en la array
+                        if (this.numbers.indexOf(this.num) < 0) {
+                            this.numbers.push(this.num);
+                            this.num = null;
+                        } else {
+                            this.error = "El numero ya existe";
+                        }
+                    } else {
+                        this.error = "Introducir un valor valido";
+                    }
+                },
+                numberSelected: function (item) { 
+
+                    this.selectedItem = item;
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>
