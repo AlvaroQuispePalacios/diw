@@ -11,6 +11,7 @@
     <div id="app">
         <Mainheader></Mainheader>
         <div class="content">
+
             <form class="form">
                 <h2 class="form-title">Crear Post</h2>
 
@@ -30,17 +31,13 @@
                     </select>
                 </div>
 
-                <input v-model="imagePost" type="file">
+                <input type="file">
 
-                <button type="button">Subir Post</button>
-                <button type="button">Guardar Cambios</button>
+                <button type="button" @click="createPost">Crear Post</button>
             </form>
+
             <section class="posts">
-                <Post v-for="post in "></Post>
-                {{titlePost}}
-                {{contentPost}}
-                {{authorPost}}
-                {{creationDatePost}}
+                <Post v-for="(post, index) in posts" :post="post"></Post>
             </section>
         </div>
         <Mainfooter></Mainfooter>
@@ -49,6 +46,7 @@
     <script type="module">
         import Mainheader from "./Mainheader.js";
         import Mainfooter from "./Mainfooter.js";
+        import Post from "./Post.js"
 
         const { createApp } = Vue;
         let app = createApp({
@@ -59,16 +57,45 @@
                     contentPost: "",
                     imagePost: "",
                     authorPost: "",
-                    creationDatePost: new Date().toLocaleDateString("en-GB"),
+                    creationDatePost: new Date().toLocaleDateString("en-GB")
                 };
             },
+
             components: {
                 Mainheader,
-                Mainfooter
+                Mainfooter,
+                Post
             },
+
             methods: {
                 createPost: function(){
+                    let post = {
+                        titlePost: this.titlePost,
+                        contentPost: this.contentPost,
+                        authorPost: this.authorPost,
+                        imagePost: this.imagePost,
+                        creationDatePost: this.creationDatePost
+                    };
+                    this.posts.push(post);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+                    this.cleanInputs();
+                },
 
+                cleanInputs: function(){
+                    this.titlePost = "";
+                    this.contentPost = "";
+                    this.imagePost = "";
+                    this.authorPost =  "";
+                }
+
+            },
+            // Recupera los posts del localStorage
+            mounted() {
+                if(localStorage.getItem("posts") != null){
+                    this.posts = JSON.parse(localStorage.getItem("posts"));
+                }else{
+                    console.log("No existen post para mostrar");
+                    this.posts = [];
                 }
             }
     
