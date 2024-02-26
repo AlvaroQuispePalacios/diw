@@ -12,6 +12,7 @@
         <Mainheader></Mainheader>
         <div class="content">
 
+
             <form class="form">
                 <h2 class="form-title">Crear Post</h2>
 
@@ -31,13 +32,13 @@
                     </select>
                 </div>
 
-                <input type="file">
-
-                <button type="button" @click="createPost">Crear Post</button>
+                <input type="file" @change="getSource" ref="fileInput">
+                <button type="button" v-if="btnCreatePost" @click="createPost">Crear Post</button>
+                <button type="button" v-if="btnSetPost" @click="setPost">Guardar cambios</button>
             </form>
 
             <section class="posts">
-                <Post v-for="(post, index) in posts" :post="post"></Post>
+                <Post v-for="(post, index) in posts" v-bind:post="post" @update-post="updatePost(index)" @delete-post="deletePost(index)"></Post>
             </section>
         </div>
         <Mainfooter></Mainfooter>
@@ -57,7 +58,10 @@
                     contentPost: "",
                     imagePost: "",
                     authorPost: "",
-                    creationDatePost: new Date().toLocaleDateString("en-GB")
+                    creationDatePost: new Date().toLocaleDateString("en-GB"),
+                    currentPost: null,
+                    btnCreatePost: true,
+                    btnSetPost: false
                 };
             },
 
@@ -86,6 +90,48 @@
                     this.contentPost = "";
                     this.imagePost = "";
                     this.authorPost =  "";
+                    this.$refs.fileInput.value = null;
+                },
+
+                // Cargamos la informacion del Post seleccionado
+                updatePost: function(index) {
+                    this.titlePost = this.posts[index].titlePost;
+                    this.contentPost = this.posts[index].contentPost;
+                    this.imagePost = this.posts[index].imagePost;
+                    this.authorPost =  this.posts[index].authorPost;
+                    // Asi tenemos la posicion del post del cual vamos a editar en el array posts para luego volverlo a guardar en el localStorage
+                    this.currentPost = index;
+                    // Muestra el boton de guardar cambios cuando se esta editando un post y oculta el boton de crear post
+                    this.btnCreatePost = false;
+                    this.btnSetPost = true;
+                },
+
+                setPost: function () {
+                    let setPost = {
+                        titlePost: this.titlePost,
+                        contentPost: this.contentPost,
+                        authorPost: this.authorPost,
+                        imagePost: this.imagePost,
+                        creationDatePost: this.creationDatePost
+                    };
+                    this.posts.splice(this.currentPost, 1, setPost);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+
+                    this.btnCreatePost = true;
+                    this.btnSetPost = false;
+                    this.currentPost = null;
+                    this.cleanInputs();
+                },
+
+                deletePost: function(index){
+                    this.posts.splice(index, 1);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+                },
+
+                getSource: function(event){
+                    // const selectedFiles = event.target.files[0].name;
+                    // console.log(selectedFiles);
+                    this.imagePost = event.target.files[0].name;
                 }
 
             },
