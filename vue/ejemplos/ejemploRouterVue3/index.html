@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+    <style>
+        #app {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* input[type="button"]{
+
+        } */
+        small {
+            color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>title</h1>
+
+        <router-link to="/">Home</router-link>
+        <router-link to="/componentenoimportaelnombre">Componente1</router-link>
+        <!-- Pasar parametros  -->
+        <!-- <router-link to="/componentenoimportaelnombre?message=mundo">Componente2 + param</router-link> -->
+        <router-link to="/componentenoimportaelnombre/mundo">Componente3 + param</router-link>
+        <router-link to="/bye">bye</router-link>
+
+        <!-- <router-link :to="{name: 'Hello', params:{message: 'message'}}">Componente + param</router-link> -->
+        <router-view></router-view>
+
+
+    </div>
+
+    <script type="module">
+        import router from "./router.js";
+
+        const { createApp } = Vue;
+        let app = createApp({
+            data: function () {
+                return {
+                    message: "hola"
+                };
+            }
+        }).use(router).mount('#app');
+        // app.use(router);
+        // app.mount('#app');
+    </script>
+</body>
+
+</html>

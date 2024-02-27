@@ -14,8 +14,8 @@
 
 
             <form class="form">
-                <h2 class="form-title">Crear Post</h2>
-
+                <h2 class="form-title" v-if="btnCreatePost">Crear Post</h2>
+                <h2 class="form-title" v-if="btnSetPost">Editar Post</h2>
                 <label>Titulo:
                     <input v-model="titlePost" type="text" name="title">
                 </label>
