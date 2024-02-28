@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Convertir el formulario para crear un post en un componente, crear un componente para editarPost??? -->
+    
+    <div id="app">
+        <Mainheader></Mainheader>
+        <div class="content">
+            <form class="form">
+                <h2 class="form-title" v-if="btnCreatePost">Crear Post</h2>
+                <h2 class="form-title" v-if="btnSetPost">Editar Post</h2>
+                <label>Titulo:
+                    <input v-model="titlePost" type="text" name="title">
+                </label>
+
+                <label>Contenido:</label>
+                <textarea v-model="contentPost" name="content"></textarea>
+
+                <div>
+                    <label>Autor:</label>
+                    <select v-model="authorPost">
+                        <option>Yo</option>
+                        <option>Tu</option>
+                        <option>El</option>
+                    </select>
+                </div>
+
+                <input type="file" @change="getSource" ref="fileInput">
+                <button type="button" v-if="btnCreatePost" @click="createPost">Crear Post</button>
+                <button type="button" v-if="btnSetPost" @click="setPost">Guardar cambios</button>
+            </form>
+
+            <section class="posts">
+                <Post v-for="(post, index) in posts" v-bind:post="post" @update-post="updatePost(index)" @delete-post="deletePost(index)"></Post>
+            </section>
+        </div>
+        <Mainfooter></Mainfooter>
+    </div>
+    
+    <script type="module">
+        import Mainheader from "./Mainheader.js";
+        import Mainfooter from "./Mainfooter.js";
+        import Post from "./Post.js"
+
+        const { createApp } = Vue;
+        let app = createApp({
+            data: function () {
+                return {
+                    posts: [],
+                    titlePost: "",
+                    contentPost: "",
+                    imagePost: "",
+                    authorPost: "",
+                    creationDatePost: new Date().toLocaleDateString("en-GB"),
+                    currentPost: null,
+                    btnCreatePost: true,
+                    btnSetPost: false
+                };
+            },
+
+            components: {
+                Mainheader,
+                Mainfooter,
+                Post
+            },
+
+            methods: {
+                createPost: function(){
+                    let post = {
+                        titlePost: this.titlePost,
+                        contentPost: this.contentPost,
+                        authorPost: this.authorPost,
+                        imagePost: this.imagePost,
+                        creationDatePost: this.creationDatePost
+                    };
+                    this.posts.push(post);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+                    this.cleanInputs();
+                },
+
+                cleanInputs: function(){
+                    this.titlePost = "";
+                    this.contentPost = "";
+                    this.imagePost = "";
+                    this.authorPost =  "";
+                    this.$refs.fileInput.value = null;
+                },
+
+                // Cargamos la informacion del Post seleccionado
+                updatePost: function(index) {
+                    this.titlePost = this.posts[index].titlePost;
+                    this.contentPost = this.posts[index].contentPost;
+                    this.imagePost = this.posts[index].imagePost;
+                    this.authorPost =  this.posts[index].authorPost;
+                    // Asi tenemos la posicion del post del cual vamos a editar en el array posts para luego volverlo a guardar en el localStorage
+                    this.currentPost = index;
+                    // Muestra el boton de guardar cambios cuando se esta editando un post y oculta el boton de crear post
+                    this.btnCreatePost = false;
+                    this.btnSetPost = true;
+                },
+
+                setPost: function () {
+                    let setPost = {
+                        titlePost: this.titlePost,
+                        contentPost: this.contentPost,
+                        authorPost: this.authorPost,
+                        imagePost: this.imagePost,
+                        creationDatePost: this.creationDatePost
+                    };
+                    this.posts.splice(this.currentPost, 1, setPost);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+
+                    this.btnCreatePost = true;
+                    this.btnSetPost = false;
+                    this.currentPost = null;
+                    this.cleanInputs();
+                },
+
+                deletePost: function(index){
+                    this.posts.splice(index, 1);
+                    localStorage.setItem("posts", JSON.stringify(this.posts));
+                },
+
+                getSource: function(event){
+                    // const selectedFiles = event.target.files[0].name;
+                    // console.log(selectedFiles);
+                    this.imagePost = event.target.files[0].name;
+                }
+
+            },
+            // Recupera los posts del localStorage
+            mounted() {
+                if(localStorage.getItem("posts") != null){
+                    this.posts = JSON.parse(localStorage.getItem("posts"));
+                }else{
+                    console.log("No existen post para mostrar");
+                    this.posts = [];
+                }
+            }
+    
+        }).mount('#app')
+    </script>
+    
+</body>
+
+
+</html>
