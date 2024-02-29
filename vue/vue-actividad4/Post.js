@@ -1,15 +1,6 @@
 export default {
     name: "Post",
-    props: ["post"],
-    methods: {
-        updatePost: function(index){
-            // Le dice al padre que algo pasa
-            this.$emit("updatePost", index);
-        },
-        deletePost: function(index){
-            this.$emit("deletePost", index);
-        }
-    },
+    props: ["post", "index"],
     template: `
         <article class="post-main">
             <section class="post-img">
@@ -27,10 +18,19 @@ export default {
                     </span>
                 </div>
                 <div class="post-content-botones">
-                    <button @click="updatePost(index)">Actualizar</button>
+                    <router-link :to="{name: 'Formcreateeditpost', params: {btnCreatePost: false, btnSetPost: true, index: index}}">
+                        <button>Actualizar</button>
+                    </router-link>
+
                     <button @click="deletePost(index)">Eliminar</button>
                 </div>
             </section>
         </article>
-    `
+    `,
+    methods: {
+        deletePost: function(index){
+            this.$emit("deletePost", index);
+        }
+    }
+    
 }
