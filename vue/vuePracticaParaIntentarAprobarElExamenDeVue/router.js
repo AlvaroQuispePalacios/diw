@@ -6,9 +6,11 @@ const routes = [
         component: Containerposts
     },
     {
-        path: "/createPost",
-        component: Formcreatepost
-    }
+        path: "/createPost/:index?/create/:isCreate?",
+        component: Formcreatepost,
+        name: "Formpost"
+    },
+
 ]
 
 const router = VueRouter.createRouter({

@@ -12,7 +12,9 @@ export default {
                 <p>{{post.contentPost}}</p>
                 <span>{{post.creationDatePost}}</span>
                 <div class="post-card-buttons">
-                    <button>Actualizar</button>
+                    <router-link :to="{name: 'Formpost', params: {index: index, isCreate: false}}">
+                        <button>Actualizar</button>
+                    </router-link>
                     <button @click="deletePost(index)">Eliminar</button>
                 </div>
             </section>
