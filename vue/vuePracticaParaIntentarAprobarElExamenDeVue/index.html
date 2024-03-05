@@ -13,9 +13,8 @@
 <body>
     <div id="app">
         <Headermain></Headermain>
-        <router-view></router-view>
+        <router-view :posts="posts"></router-view>
     </div>
-
     <script type="module">
         // Primero importas el componente
         import router from "./router.js";

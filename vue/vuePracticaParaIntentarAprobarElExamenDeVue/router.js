@@ -6,7 +6,7 @@ const routes = [
         component: Containerposts
     },
     {
-        path: "/crearPost",
+        path: "/createPost",
         component: Formcreatepost
     }
 ]
