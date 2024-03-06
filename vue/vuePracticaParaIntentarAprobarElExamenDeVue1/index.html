@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="app">
+        <Headermain></Headermain>
+        <router-view :posts="posts"></router-view>
+    </div>
+    <script type="module">
+        // Primero importas el componente
+        import router from "./router.js";
+        import Headermain from "./Headermain.js";
+
+        const { createApp } = Vue;
+        let app = createApp({
+            data: function(){
+                return{
+                    posts: []
+                }
+            },
+            // Declaramos que componentes vamos a utilizar
+            components:{
+                Headermain
+            },
+            mounted(){
+                if(localStorage.getItem("posts") != null){
+                    this.posts = JSON.parse(localStorage.getItem("posts"));
+                }else{
+                    this.posts = [];
+                }
+                this.$router.push("/");
+            }
+        }).use(router).mount("#app");
+
+
+    </script>
+</body>
+
+</html>
