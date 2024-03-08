@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+    <script src="https://unpkg.com/vue-demi"></script>
+    <script src="https://unpkg.com/pinia"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <Mainheader></Mainheader>
+        <router-view :posts="posts"></router-view>
+        <Mainfooter></Mainfooter>
+
+    </div>
+
+    <script type="module">
+        import router from "./router.js";
+        import store from "./store.js";
+        import Mainheader from "./Mainheader.js";
+        import Mainfooter from "./Mainfooter.js";
+
+        const pinia = Pinia.createPinia();
+        const { createApp } = Vue;
+        let app = createApp({
+            data: function () {
+                return {
+                    posts: [],
+                };
+            },
+            components: {
+                Mainheader,
+                Mainfooter,
+            },
+            computed: {
+                // ...Pinia.mapState(store, ['count'])
+            },
+            methods: {
+                // ...Pinia.mapActions(store, ['increment'])
+            },
+            // Recupera los posts del localStorage
+            mounted() {
+                if (localStorage.getItem("posts") != null) {
+                    this.posts = JSON.parse(localStorage.getItem("posts"));
+                } else {
+                    console.log("No existen post para mostrar");
+                    this.posts = [];
+                }
+                this.$router.push("/")
+            }
+
+        }).use(router).use(pinia).mount('#app')
+    </script>
+
+</body>
+
+
+</html>
