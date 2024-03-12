@@ -32,7 +32,7 @@
         let app = createApp({
             data: function () {
                 return {
-                    posts: [],
+                    // posts: [],
                 };
             },
             components: {
@@ -41,19 +41,23 @@
             },
             computed: {
                 // ...Pinia.mapState(store, ['count'])
+                ...Pinia.mapState(store, ["posts"]),
+                ...Pinia.mapState(store, ["saludar"]),
             },
             methods: {
-                // ...Pinia.mapActions(store, ['increment'])
+                ...Pinia.mapActions(store, ['getPosts'])
             },
             // Recupera los posts del localStorage
             mounted() {
-                if (localStorage.getItem("posts") != null) {
-                    this.posts = JSON.parse(localStorage.getItem("posts"));
-                } else {
-                    console.log("No existen post para mostrar");
-                    this.posts = [];
-                }
-                this.$router.push("/")
+                // if (localStorage.getItem("posts") != null) {
+                //     this.posts = JSON.parse(localStorage.getItem("posts"));
+                // } else {
+                //     console.log("No existen post para mostrar");
+                //     this.posts = [];
+                // }
+                this.getPosts();
+                this.$router.push("/");
+                console.log(this.saludar);
             }
 
         }).use(router).use(pinia).mount('#app')
